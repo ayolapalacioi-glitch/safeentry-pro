@@ -11,7 +11,8 @@ import {
   Anchor, 
   Edit3, 
   Search,
-  User
+  User,
+  Building2
 } from 'lucide-react';
 import type { Worker } from '../types';
 import { updateWorkerVigencias, addDaysToToday } from '../services/dataService';
@@ -97,84 +98,90 @@ export const TrabajadoresVigencias: React.FC<TrabajadoresVigenciasProps> = ({ wo
       </div>
 
       {/* Worker Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {filtered.map(w => {
-          const semaforoColor = 
-            w.color_semaforo === 'VERDE' ? 'border-emerald-700/60 bg-emerald-950/10' :
-            w.color_semaforo === 'AMARILLO' ? 'border-amber-700/60 bg-amber-950/15' :
-            'border-rose-700/60 bg-rose-950/20';
-
           return (
             <div 
               key={w.cedula}
-              className={`border rounded-xl p-4 shadow-lg flex flex-col justify-between transition-all ${semaforoColor}`}
+              className="bg-[#111927] border border-slate-800 hover:border-slate-700 rounded-2xl p-5 shadow-lg hover:shadow-xl flex flex-col justify-between transition-all"
             >
               <div>
                 {/* Header Card */}
-                <div className="flex items-start gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex flex-col items-center justify-center text-amber-400 font-bold font-mono text-sm shadow-inner shrink-0 relative overflow-hidden">
+                <div className="flex items-start gap-3.5">
+                  <div className="w-12 h-12 rounded-xl bg-[#0b101a] border border-slate-700/80 flex flex-col items-center justify-center text-amber-400 font-bold font-mono text-sm shadow-inner shrink-0 relative overflow-hidden">
                     <User className="w-5 h-5 text-slate-400 mb-0.5" />
                     <span className="text-[9px] text-amber-400 font-bold tracking-tight">
                       {w.nombre_completo.split(' ').slice(0, 2).map(n => n[0]).join('')}
                     </span>
                   </div>
+
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-mono font-bold text-amber-400">
+                      <span className="text-xs font-mono font-bold text-amber-400">
                         C.C. {w.cedula}
                       </span>
-                      <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded border ${
-                        w.color_semaforo === 'VERDE' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
-                        w.color_semaforo === 'AMARILLO' ? 'bg-amber-950 text-amber-300 border-amber-800' :
-                        'bg-rose-950 text-rose-300 border-rose-800'
+                      <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border ${
+                        w.color_semaforo === 'VERDE' 
+                          ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' 
+                          : w.color_semaforo === 'AMARILLO' 
+                          ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' 
+                          : 'bg-rose-500/10 text-rose-400 border-rose-500/30'
                       }`}>
-                        {w.color_semaforo}
+                        {w.color_semaforo === 'VERDE' ? 'AL DÍA' : w.color_semaforo === 'AMARILLO' ? 'PREALERTA' : 'VENCIDO'}
                       </span>
                     </div>
-                    <h3 className="font-bold text-white text-sm truncate mt-0.5">
+
+                    <h3 className="font-bold text-white text-sm truncate mt-1">
                       {w.nombre_completo}
                     </h3>
-                    <p className="text-xs text-slate-400 truncate">{w.cargo}</p>
+
+                    <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-1 font-medium">
+                      <Building2 className="w-3.5 h-3.5 text-amber-400/80 shrink-0" />
+                      <span className="truncate">{w.empresa_contratista}</span>
+                    </div>
+
+                    <p className="text-xs text-slate-300 font-medium truncate mt-0.5">{w.cargo}</p>
                   </div>
                 </div>
 
                 {/* Vigencias Status Grid */}
-                <div className="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-slate-800/80 text-xs">
+                <div className="grid grid-cols-2 gap-2 mt-4 pt-3.5 border-t border-slate-800 text-xs">
                   {/* ARL */}
-                  <div className="bg-[#0b101a] p-2.5 rounded-lg border border-slate-800">
+                  <div className="bg-[#0b101a] p-3 rounded-xl border border-slate-800">
                     <div className="text-[10px] text-slate-400 flex items-center justify-between">
-                      <span>ARL / PILA</span>
+                      <span className="font-mono uppercase">ARL / PILA</span>
                       <FileCheck className="w-3 h-3 text-blue-400" />
                     </div>
                     <div className="mt-1 flex items-baseline justify-between">
-                      <span className="font-mono font-bold text-sm text-white">
-                        {w.dias_vigentes_arl}d
+                      <span className={`font-mono font-bold text-sm ${
+                        w.dias_vigentes_arl > 15 ? 'text-emerald-400' : w.dias_vigentes_arl > 0 ? 'text-amber-400' : 'text-rose-400'
+                      }`}>
+                        {w.dias_vigentes_arl}d vigentes
                       </span>
-                      <span className="text-[10px] text-slate-400 truncate ml-1">{w.arl_entidad.split(' ')[0]}</span>
                     </div>
-                    <div className="text-[10px] text-slate-500 font-mono mt-0.5">Vence: {w.arl_fecha_vencimiento}</div>
+                    <div className="text-[10px] text-slate-400 font-mono mt-0.5 truncate">{w.arl_entidad.split(' ')[0]} · {w.arl_fecha_vencimiento}</div>
                   </div>
 
                   {/* Alturas */}
-                  <div className="bg-[#0b101a] p-2.5 rounded-lg border border-slate-800">
+                  <div className="bg-[#0b101a] p-3 rounded-xl border border-slate-800">
                     <div className="text-[10px] text-slate-400 flex items-center justify-between">
-                      <span>Curso Alturas</span>
+                      <span className="font-mono uppercase">Curso Alturas</span>
                       <Anchor className="w-3 h-3 text-amber-400" />
                     </div>
                     <div className="mt-1 flex items-baseline justify-between">
                       <span className="font-mono font-bold text-sm text-white">
-                        {w.alturas_requerido ? `${w.dias_vigentes_alturas ?? 0}d` : 'N/A'}
+                        {w.alturas_requerido ? `${w.dias_vigentes_alturas ?? 0}d` : 'No Aplica'}
                       </span>
                       {w.alturas_requerido && (
-                        <span className={`text-[9px] font-bold px-1 rounded ${
-                          (w.dias_vigentes_alturas ?? 0) > 0 ? 'text-emerald-400' : 'text-rose-400'
+                        <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                          (w.dias_vigentes_alturas ?? 0) > 0 ? 'bg-emerald-950 text-emerald-400' : 'bg-rose-950 text-rose-400'
                         }`}>
-                          {(w.dias_vigentes_alturas ?? 0) > 0 ? 'OK' : 'VENCIDO'}
+                          {(w.dias_vigentes_alturas ?? 0) > 0 ? 'OK' : 'EXPIRÓ'}
                         </span>
                       )}
                     </div>
-                    <div className="text-[10px] text-slate-500 font-mono mt-0.5">
-                      {w.alturas_requerido ? `Vence: ${w.alturas_fecha_vencimiento}` : 'No requiere'}
+                    <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                      {w.alturas_requerido ? `Vence: ${w.alturas_fecha_vencimiento}` : 'Personal de suelo'}
                     </div>
                   </div>
                 </div>
@@ -183,10 +190,10 @@ export const TrabajadoresVigencias: React.FC<TrabajadoresVigenciasProps> = ({ wo
               {/* Action Button: Renew paperwork */}
               <button
                 onClick={() => openUpdateModal(w)}
-                className="mt-4 w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                className="mt-4 w-full py-2 bg-slate-800/80 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm"
               >
                 <Edit3 className="w-3.5 h-3.5 text-amber-400" />
-                Renovar Soporte PILA / Alturas
+                Actualizar Planilla PILA / Alturas
               </button>
             </div>
           );
