@@ -47,9 +47,9 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ record, onClose })
 
             {/* Tactical Stamped Overlays */}
             <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded font-mono text-[11px] text-slate-200 border border-slate-700">
-              <div className="text-amber-400 font-bold">NTP TIMESTAMP: {record.hora_exacta_llegada}</div>
+              <div className="text-amber-400 font-bold">HORA EXACTA: {record.hora_exacta_llegada}</div>
               <div>FECHA: {record.fecha}</div>
-              <div>OBRA: TORRE ALTAGRACIA - KIOSCO 01</div>
+              <div>OBRA: 4·90 ESPACIOS S.A.S. - PORTERÍA PRINCIPAL</div>
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 bg-black/80 backdrop-blur-md px-3 py-2 rounded font-mono text-[11px] text-slate-200 border border-slate-700 flex items-center justify-between">
@@ -66,7 +66,7 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ record, onClose })
           {/* EPP Verification Matrix */}
           <div className="bg-[#0b101a] border border-slate-800 p-4 rounded-lg space-y-2">
             <h4 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider">
-              Diagnóstico de Implementos EPP (YOLOv11):
+              Diagnóstico de Dotación EPP en Ingreso:
             </h4>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">

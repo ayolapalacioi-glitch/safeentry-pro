@@ -244,7 +244,7 @@ export const ExpedienteMensual: React.FC<ExpedienteMensualProps> = ({ workers, b
             <div>
               <div className="border-b border-slate-700 w-48 mb-2"></div>
               <div className="font-bold text-slate-200">Director Administrativo / Nómina</div>
-              <div className="text-[11px]">Constructora Principal S.A.S.</div>
+              <div className="text-[11px]">4·90 ESPACIOS S.A.S.</div>
             </div>
           </div>
 

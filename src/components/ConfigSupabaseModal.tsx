@@ -91,11 +91,11 @@ export const ConfigSupabaseModal: React.FC = () => {
           <div className="flex items-center gap-2">
             <Database className="w-5 h-5 text-amber-400" />
             <h1 className="text-xl font-bold text-white tracking-tight font-mono">
-              Arquitectura de Persistencia: Supabase (SQL) & NoSQL Edge
+              Central de Datos & Resiliencia en Obra · 4·90 Espacios
             </h1>
           </div>
           <p className="text-xs text-slate-400 mt-1">
-            Gestión híbrida: PostgreSQL inmutable en la nube para auditoría y almacén local NoSQL para alta disponibilidad a las 6:30 AM en obra.
+            Gestión híbrida: Sincronización continua hacia la nube y operación local autónoma a las 6:30 AM ante cualquier corte de red en obra.
           </p>
         </div>
       </div>
@@ -108,7 +108,7 @@ export const ConfigSupabaseModal: React.FC = () => {
             <div className="flex items-center gap-2">
               <UploadCloud className="w-4 h-4 text-emerald-400" />
               <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider">
-                Conexión Supabase (PostgreSQL)
+                Servidor Central en la Nube
               </h2>
             </div>
             <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
@@ -116,18 +116,18 @@ export const ConfigSupabaseModal: React.FC = () => {
                 ? 'bg-emerald-950 text-emerald-300 border-emerald-800' 
                 : 'bg-slate-800 text-slate-400 border-slate-700'
             }`}>
-              {currentConfig.isConnected ? 'CONFIGURADO' : 'MODO LOCAL'}
+              {currentConfig.isConnected ? 'ENLACE ACTIVO' : 'MODO LOCAL OBRA'}
             </span>
           </div>
 
           <form onSubmit={handleSave} className="space-y-3 text-xs">
             <div>
               <label className="block text-slate-300 font-medium mb-1">
-                Project URL de Supabase:
+                Punto de Enlace del Servidor Central (URL):
               </label>
               <input
                 type="text"
-                placeholder="https://xyzcompany.supabase.co"
+                placeholder="https://490espacios.empresa.co"
                 value={supabaseUrl}
                 onChange={(e) => setSupabaseUrl(e.target.value)}
                 className="w-full p-2.5 bg-[#0b101a] border border-slate-700 rounded-lg text-slate-200 font-mono text-xs focus:outline-none focus:border-amber-500"
@@ -136,11 +136,11 @@ export const ConfigSupabaseModal: React.FC = () => {
 
             <div>
               <label className="block text-slate-300 font-medium mb-1">
-                Anon Public Key:
+                Clave de Seguridad / Token de Acceso:
               </label>
               <input
                 type="password"
-                placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+                placeholder="token-seguridad-4-90-espacios..."
                 value={anonKey}
                 onChange={(e) => setAnonKey(e.target.value)}
                 className="w-full p-2.5 bg-[#0b101a] border border-slate-700 rounded-lg text-slate-200 font-mono text-xs focus:outline-none focus:border-amber-500"
@@ -185,23 +185,23 @@ export const ConfigSupabaseModal: React.FC = () => {
           )}
         </div>
 
-        {/* NoSQL Edge Database Status (IndexedDB) */}
+        {/* Local Gateway Storage */}
         <div className="bg-[#111927] border border-slate-800 rounded-xl p-5 shadow-lg space-y-4 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
               <div className="flex items-center gap-2">
                 <HardDrive className="w-4 h-4 text-amber-400" />
                 <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider">
-                  Base de Datos NoSQL Edge (Portería)
+                  Almacén Autónomo Local (Portería 4·90)
                 </h2>
               </div>
               <span className="text-[10px] bg-amber-950 text-amber-300 border border-amber-800 font-bold px-2 py-0.5 rounded font-mono">
-                ACTIVA · LOCAL
+                ACTIVO · EN LÍNEA
               </span>
             </div>
 
             <p className="text-xs text-slate-400 mb-4">
-              Almacena localmente las fotos forenses, estampas de tiempo NTP y colas de sincronización para que la obra jamás dependa de internet.
+              Almacena localmente las fotos de dotación, sellos inmutables y colas de sincronización para que la obra jamás dependa de internet a las 6:30 AM.
             </p>
 
             <div className="grid grid-cols-2 gap-3 text-xs">

@@ -151,11 +151,11 @@ export function App() {
         onClose={() => setSelectedEvidence(null)} 
       />
 
-      {/* Industrial Footer */}
-      <footer className="bg-[#090D16] border-t border-slate-900 py-4 px-6 text-center text-xs text-slate-400">
+      {/* Corporate Footer */}
+      <footer className="bg-slate-900 border-t border-slate-800 py-4 px-6 text-center text-xs text-slate-400">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-[11px]">
-          <span>SAFEENTRY PRO · SISTEMA DE AUDITORÍA SG-SST PARA OBRAS CIVILES</span>
-          <span className="text-slate-400">RESOLUCIÓN 0312/2019 · RESOLUCIÓN 4272/2021 (ALTURAS)</span>
+          <span className="text-slate-300 font-bold">4·90 ESPACIOS S.A.S. · CONTROL OPERATIVO & SG-SST</span>
+          <span className="text-slate-400">RESOLUCIÓN 0312/2019 · RESOLUCIÓN 4272/2021 (TRABAJO SEGURO EN ALTURAS)</span>
         </div>
       </footer>
 

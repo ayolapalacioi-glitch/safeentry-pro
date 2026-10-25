@@ -238,13 +238,13 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
           <div className="bg-[#0b101a] px-4 py-2.5 border-b border-slate-800 flex items-center justify-between text-xs font-mono text-slate-300">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-              <span className="font-bold text-slate-200">CAM-01 PORTERÍA</span>
+              <span className="font-bold text-slate-200">CAM-01 PORTERÍA 4·90 ESPACIOS</span>
               <span className="text-slate-500">|</span>
-              <span className="text-slate-400">RTSP 1080p · 30 FPS</span>
+              <span className="text-slate-400">RTSP 1080p · EN VIVO</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-amber-400 bg-amber-950/60 border border-amber-800/60 px-2 py-0.5 rounded text-[11px] font-bold">
-                MODELO: YOLOv11-EPP EDGE
+                AUDITORÍA ÓPTICA DE DOTACIÓN EPP
               </span>
             </div>
           </div>
@@ -279,7 +279,7 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs uppercase font-mono font-bold tracking-wider text-slate-400 flex items-center gap-1.5">
                 <ShieldAlert className="w-4 h-4 text-amber-400" />
-                Auditoría en Tiempo Real de Implementos (YOLOv11):
+                Auditoría en Tiempo Real de Implementos Obligatorios:
               </span>
               <span className="text-[11px] text-slate-400">
                 (Haz clic en un ícono para simular que el obrero se lo quita)
@@ -521,7 +521,7 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Auditoría EPP (YOLOv11):</span>
+                  <span className="text-slate-400">Auditoría de Dotación EPP:</span>
                   <span className={`font-semibold ${lastResult.estado_epp === 'COMPLETO' ? 'text-emerald-400' : 'text-rose-400'}`}>
                     {lastResult.estado_epp === 'COMPLETO' ? 'Dotación Completa (6/6 OK)' : `Incompleto: ${lastResult.epp_faltantes.join(', ')}`}
                   </span>

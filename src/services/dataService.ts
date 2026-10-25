@@ -62,8 +62,9 @@ export const INITIAL_WORKERS: Worker[] = [
     id: 'w-1045821900',
     cedula: '1045821900',
     nombre_completo: 'Carlos Andrés Pérez',
-    cargo: 'Oficial de Alturas',
-    empresa_contratista: 'Constructora Bolívar & Concretos',
+    cargo: 'Oficial de Alturas & Estructura',
+    empresa_contratista: '4·90 ESPACIOS S.A.S.',
+    grupo_sanguineo: 'O+',
     arl_entidad: 'Positiva Compañía de Seguros',
     arl_fecha_vencimiento: addDaysToToday(24),
     dias_vigentes_arl: 24,
@@ -74,7 +75,7 @@ export const INITIAL_WORKERS: Worker[] = [
     examen_medico_vencimiento: addDaysToToday(180),
     epp_requeridos: ['helmet', 'goggles', 'reflective_vest', 'safety_harness', 'gloves', 'safety_boots'],
     estado: 'ACTIVO',
-    foto_perfil_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80',
+    foto_perfil_url: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&auto=format&fit=crop&q=80',
     color_semaforo: 'VERDE'
   },
   {
@@ -82,7 +83,8 @@ export const INITIAL_WORKERS: Worker[] = [
     cedula: '1032441205',
     nombre_completo: 'Brayan Alexis Martínez',
     cargo: 'Ayudante Práctico de Obra',
-    empresa_contratista: 'Consorcio Estructuras Andinas',
+    empresa_contratista: '4·90 ESPACIOS S.A.S.',
+    grupo_sanguineo: 'A+',
     arl_entidad: 'Seguros Bolívar',
     arl_fecha_vencimiento: addDaysToToday(28),
     dias_vigentes_arl: 28,
@@ -90,7 +92,7 @@ export const INITIAL_WORKERS: Worker[] = [
     examen_medico_vencimiento: addDaysToToday(95),
     epp_requeridos: ['helmet', 'goggles', 'reflective_vest', 'gloves', 'safety_boots'],
     estado: 'ACTIVO',
-    foto_perfil_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80',
+    foto_perfil_url: 'https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=600&auto=format&fit=crop&q=80',
     color_semaforo: 'VERDE'
   },
   {
@@ -98,7 +100,8 @@ export const INITIAL_WORKERS: Worker[] = [
     cedula: '79845120',
     nombre_completo: 'Nelson Enrique Gómez',
     cargo: 'Oficial Encofrador',
-    empresa_contratista: 'Constructora Bolívar & Concretos',
+    empresa_contratista: '4·90 ESPACIOS S.A.S.',
+    grupo_sanguineo: 'O-',
     arl_entidad: 'Seguros Bolívar',
     arl_fecha_vencimiento: addDaysToToday(18),
     dias_vigentes_arl: 18,
@@ -109,7 +112,7 @@ export const INITIAL_WORKERS: Worker[] = [
     examen_medico_vencimiento: addDaysToToday(45),
     epp_requeridos: ['helmet', 'goggles', 'reflective_vest', 'safety_harness', 'gloves', 'safety_boots'],
     estado: 'ACTIVO',
-    foto_perfil_url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=80',
+    foto_perfil_url: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&auto=format&fit=crop&q=80',
     color_semaforo: 'ROJO'
   },
   {
@@ -117,7 +120,8 @@ export const INITIAL_WORKERS: Worker[] = [
     cedula: '98712330',
     nombre_completo: 'Jorge Eliecer Ramírez',
     cargo: 'Soldador Estructural',
-    empresa_contratista: 'Metalmédica & Montajes S.A.S.',
+    empresa_contratista: '4·90 ESPACIOS S.A.S.',
+    grupo_sanguineo: 'B+',
     arl_entidad: 'ARL SURA',
     arl_fecha_vencimiento: addDaysToToday(6), // Pre-alerta (<= 15 días)
     dias_vigentes_arl: 6,
@@ -128,7 +132,7 @@ export const INITIAL_WORKERS: Worker[] = [
     examen_medico_vencimiento: addDaysToToday(120),
     epp_requeridos: ['helmet', 'goggles', 'reflective_vest', 'safety_harness', 'gloves', 'safety_boots'],
     estado: 'ACTIVO',
-    foto_perfil_url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80',
+    foto_perfil_url: 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=600&auto=format&fit=crop&q=80',
     color_semaforo: 'AMARILLO'
   },
   {
@@ -136,7 +140,8 @@ export const INITIAL_WORKERS: Worker[] = [
     cedula: '1018990412',
     nombre_completo: 'Álvaro Hernán Castro',
     cargo: 'Maestro General de Obra',
-    empresa_contratista: 'Constructora Bolívar & Concretos',
+    empresa_contratista: '4·90 ESPACIOS S.A.S.',
+    grupo_sanguineo: 'O+',
     arl_entidad: 'ARL SURA',
     arl_fecha_vencimiento: addDaysToToday(30),
     dias_vigentes_arl: 30,
@@ -147,7 +152,7 @@ export const INITIAL_WORKERS: Worker[] = [
     examen_medico_vencimiento: addDaysToToday(210),
     epp_requeridos: ['helmet', 'goggles', 'reflective_vest', 'gloves', 'safety_boots'],
     estado: 'ACTIVO',
-    foto_perfil_url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80',
+    foto_perfil_url: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&auto=format&fit=crop&q=80',
     color_semaforo: 'VERDE'
   },
   {
@@ -155,7 +160,8 @@ export const INITIAL_WORKERS: Worker[] = [
     cedula: '1090334811',
     nombre_completo: 'Edwin David Morales',
     cargo: 'Electricista Industrial',
-    empresa_contratista: 'Redes & Energía de Colombia',
+    empresa_contratista: '4·90 ESPACIOS S.A.S.',
+    grupo_sanguineo: 'A+',
     arl_entidad: 'Colmena Seguros',
     arl_fecha_vencimiento: addDaysToToday(19),
     dias_vigentes_arl: 19,
@@ -166,7 +172,7 @@ export const INITIAL_WORKERS: Worker[] = [
     examen_medico_vencimiento: addDaysToToday(150),
     epp_requeridos: ['helmet', 'goggles', 'reflective_vest', 'safety_harness', 'gloves', 'safety_boots'],
     estado: 'ACTIVO',
-    foto_perfil_url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=300&auto=format&fit=crop&q=80',
+    foto_perfil_url: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&auto=format&fit=crop&q=80',
     color_semaforo: 'VERDE'
   }
 ];
@@ -176,7 +182,7 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     id: 'bit-001',
     cedula: '1045821900',
     trabajador_nombre: 'Carlos Andrés Pérez',
-    cargo: 'Oficial de Alturas',
+    cargo: 'Oficial de Alturas & Estructura',
     fecha: new Date().toISOString().split('T')[0],
     hora_exacta_llegada: '06:52:14 AM',
     timestamp_ntp: new Date().toISOString(),
@@ -193,10 +199,10 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     epp_faltantes: [],
     dias_vigentes_arl: 24,
     dias_vigentes_alturas: 142,
-    foto_evidencia_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&fit=crop',
-    confidence_avg: 97.8,
+    foto_evidencia_url: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&auto=format&fit=crop&q=80',
+    confidence_avg: 98.4,
     hash_inmutable: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-    nodo_porteria_id: 'KIOSKO-01-PRINCIPAL',
+    nodo_porteria_id: 'KIOSKO-01-4-90-ESPACIOS',
     sincronizado_desde_edge: true,
     created_at: new Date().toISOString()
   },
@@ -221,10 +227,10 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     epp_faltantes: [],
     dias_vigentes_arl: 30,
     dias_vigentes_alturas: 85,
-    foto_evidencia_url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&fit=crop',
-    confidence_avg: 98.2,
+    foto_evidencia_url: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&auto=format&fit=crop&q=80',
+    confidence_avg: 99.1,
     hash_inmutable: 'a127a44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852ba89',
-    nodo_porteria_id: 'KIOSKO-01-PRINCIPAL',
+    nodo_porteria_id: 'KIOSKO-01-4-90-ESPACIOS',
     sincronizado_desde_edge: true,
     created_at: new Date().toISOString()
   },
@@ -249,10 +255,10 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     epp_faltantes: [],
     dias_vigentes_arl: 6,
     dias_vigentes_alturas: 48,
-    foto_evidencia_url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&fit=crop',
-    confidence_avg: 96.5,
+    foto_evidencia_url: 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=600&auto=format&fit=crop&q=80',
+    confidence_avg: 97.2,
     hash_inmutable: 'b943214298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852cd12',
-    nodo_porteria_id: 'KIOSKO-01-PRINCIPAL',
+    nodo_porteria_id: 'KIOSKO-01-4-90-ESPACIOS',
     sincronizado_desde_edge: true,
     created_at: new Date().toISOString()
   }
@@ -267,9 +273,9 @@ export const INITIAL_RECHAZOS: AuditoriaRechazo[] = [
     timestamp_intento: new Date().toISOString(),
     motivo_bloqueo: 'ALTURAS_VENCIDO',
     detalle_bloqueo: 'Certificado de Trabajo Seguro en Alturas (Res. 4272/2021) venció hace 2 días. Ingreso bloqueado automáticamente en torniquete.',
-    foto_evidencia_url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&fit=crop',
+    foto_evidencia_url: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&auto=format&fit=crop&q=80',
     notificado_siso: true,
-    observacion_inspector: 'Notificado a SISO. Se coordinó reentrenamiento con SENA para el fin de semana.'
+    observacion_inspector: 'Notificado a SISO. Se programó reentrenamiento para el fin de semana.'
   }
 ];
 

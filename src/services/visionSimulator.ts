@@ -23,8 +23,8 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
     description: 'Oficial de Alturas con dotación completa de 6 implementos y papeles vigentes.',
     workerCedula: '1045821900',
     workerName: 'Carlos Andrés Pérez',
-    cargo: 'Oficial de Alturas',
-    imageFallback: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop',
+    cargo: 'Oficial de Alturas & Estructura',
+    imageFallback: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&auto=format&fit=crop&q=80',
     detections: {
       helmet: { key: 'helmet', label: 'Casco Dielectrico', detected: true, confidence: 99.4, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Seguridad', detected: true, confidence: 96.8, box: [0.22, 0.38, 0.28, 0.62], required: true },
@@ -41,7 +41,7 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
     workerCedula: '1032441205',
     workerName: 'Brayan Alexis Martínez',
     cargo: 'Ayudante Práctico de Obra',
-    imageFallback: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&fit=crop',
+    imageFallback: 'https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=800&auto=format&fit=crop&q=80',
     detections: {
       helmet: { key: 'helmet', label: 'Casco Obra', detected: true, confidence: 98.7, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Seguridad', detected: false, confidence: 12.3, required: true },
@@ -58,7 +58,7 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
     workerCedula: '98712330',
     workerName: 'Jorge Eliecer Ramírez',
     cargo: 'Soldador Estructural',
-    imageFallback: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&fit=crop',
+    imageFallback: 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=800&auto=format&fit=crop&q=80',
     detections: {
       helmet: { key: 'helmet', label: 'Careta / Casco', detected: true, confidence: 99.1, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Seguridad', detected: true, confidence: 95.4, box: [0.22, 0.38, 0.28, 0.62], required: true },
@@ -75,7 +75,7 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
     workerCedula: '79845120',
     workerName: 'Nelson Enrique Gómez',
     cargo: 'Oficial Encofrador',
-    imageFallback: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&fit=crop',
+    imageFallback: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&auto=format&fit=crop&q=80',
     detections: {
       helmet: { key: 'helmet', label: 'Casco de Seguridad', detected: true, confidence: 98.9, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Protección', detected: true, confidence: 94.6, box: [0.22, 0.38, 0.28, 0.62], required: true },
