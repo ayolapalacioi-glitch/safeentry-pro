@@ -98,3 +98,12 @@ export interface EdgeSyncState {
   supabaseConnected: boolean;
   edgeDbReady: boolean;
 }
+
+export interface Note {
+  id: number;
+  title: string;
+  content?: string;
+  categoria?: 'SEGURIDAD_SST' | 'AVANCE_OBRA' | 'INTERVENTORIA' | 'PERSONAL' | 'GENERAL';
+  autor?: string;
+  created_at?: string;
+}

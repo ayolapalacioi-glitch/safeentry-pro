@@ -13,8 +13,8 @@ import type { EdgeSyncState } from '../types';
 import { syncEngine } from '../services/syncEngine';
 
 interface HeaderProps {
-  activeTab: 'landing' | 'kiosco' | 'dashboard' | 'bitacora' | 'trabajadores' | 'expedientes' | 'config';
-  setActiveTab: (tab: 'landing' | 'kiosco' | 'dashboard' | 'bitacora' | 'trabajadores' | 'expedientes' | 'config') => void;
+  activeTab: 'landing' | 'kiosco' | 'dashboard' | 'bitacora' | 'trabajadores' | 'expedientes' | 'notas' | 'docs' | 'config';
+  setActiveTab: (tab: 'landing' | 'kiosco' | 'dashboard' | 'bitacora' | 'trabajadores' | 'expedientes' | 'notas' | 'docs' | 'config') => void;
   syncState: EdgeSyncState;
 }
 
@@ -127,6 +127,29 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, syncSta
             }`}
           >
             Expediente Mensual
+          </button>
+
+          <button
+            onClick={() => setActiveTab('notas')}
+            className={`px-3 py-1.5 rounded text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+              activeTab === 'notas'
+                ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
+            }`}
+          >
+            <span>Notas de Obra</span>
+            <span className="bg-emerald-600 text-white text-[10px] font-bold px-1.5 py-0.2 rounded">CRUD Excel</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('docs')}
+            className={`px-3 py-1.5 rounded text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+              activeTab === 'docs'
+                ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
+            }`}
+          >
+            <span>Documentación</span>
           </button>
 
           <button

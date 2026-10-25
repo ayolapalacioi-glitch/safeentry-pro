@@ -11,6 +11,8 @@ import { DashboardSST } from './components/DashboardSST';
 import { BitacoraLedger } from './components/BitacoraLedger';
 import { TrabajadoresVigencias } from './components/TrabajadoresVigencias';
 import { ExpedienteMensual } from './components/ExpedienteMensual';
+import { NotesCrudView } from './components/NotesCrudView';
+import { ProjectDocsView } from './components/ProjectDocsView';
 import { ConfigSupabaseModal } from './components/ConfigSupabaseModal';
 import { EvidenceModal } from './components/EvidenceModal';
 
@@ -19,7 +21,7 @@ import { initializeDataLayer, getWorkers, getBitacora, getRechazos } from './ser
 import { syncEngine } from './services/syncEngine';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<'landing' | 'kiosco' | 'dashboard' | 'bitacora' | 'trabajadores' | 'expedientes' | 'config'>('landing');
+  const [activeTab, setActiveTab] = useState<'landing' | 'kiosco' | 'dashboard' | 'bitacora' | 'trabajadores' | 'expedientes' | 'notas' | 'docs' | 'config'>('landing');
   const [workers, setWorkers] = useState<Worker[]>([]);
   const [bitacora, setBitacora] = useState<BitacoraIngreso[]>([]);
   const [rechazos, setRechazos] = useState<AuditoriaRechazo[]>([]);
@@ -85,7 +87,7 @@ export function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0F17] text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col font-sans">
       
       {/* Top Industrial Header with NTP Clock & State */}
       <Header 
@@ -138,6 +140,14 @@ export function App() {
             workers={workers} 
             bitacora={bitacora} 
           />
+        )}
+
+        {activeTab === 'notas' && (
+          <NotesCrudView />
+        )}
+
+        {activeTab === 'docs' && (
+          <ProjectDocsView />
         )}
 
         {activeTab === 'config' && (

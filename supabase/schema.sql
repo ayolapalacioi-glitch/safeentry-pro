@@ -203,3 +203,21 @@ CREATE POLICY "Insercion de bitacora" ON public.bitacora_ingresos_diarios FOR IN
 CREATE POLICY "Lectura rechazos" ON public.auditoria_rechazos_sst FOR SELECT USING (true);
 CREATE POLICY "Insercion rechazos" ON public.auditoria_rechazos_sst FOR INSERT WITH CHECK (true);
 CREATE POLICY "Lectura mensual" ON public.historial_mensual_persona FOR SELECT USING (true);
+
+-- ==============================================================================
+-- 9. TABLA DE NOTAS & NOVEDADES DE OBRA (CRUD)
+-- ==============================================================================
+CREATE TABLE IF NOT EXISTS public.notes (
+  id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title TEXT NOT NULL,
+  content TEXT,
+  categoria TEXT DEFAULT 'GENERAL',
+  autor TEXT DEFAULT 'Inspector SST 4·90',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE public.notes ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "public can read notes" ON public.notes FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "public can insert notes" ON public.notes FOR INSERT TO anon, authenticated WITH CHECK (true);
+CREATE POLICY "public can update notes" ON public.notes FOR UPDATE TO anon, authenticated USING (true);
+CREATE POLICY "public can delete notes" ON public.notes FOR DELETE TO anon, authenticated USING (true);
