@@ -103,6 +103,8 @@ export function App() {
             onLaunchKiosk={() => setActiveTab('kiosco')}
             onLaunchDashboard={() => setActiveTab('dashboard')}
             onLaunchBitacora={() => setActiveTab('bitacora')}
+            onLaunchNotes={() => setActiveTab('notas')}
+            onLaunchDocs={() => setActiveTab('docs')}
           />
         )}
 

@@ -14,19 +14,26 @@ import {
   Eye, 
   Lock, 
   FileCheck2, 
-  ChevronRight
+  ChevronRight,
+  FileSpreadsheet,
+  BookOpen,
+  Database
 } from 'lucide-react';
 
 interface StartupLandingProps {
   onLaunchKiosk: () => void;
   onLaunchDashboard: () => void;
   onLaunchBitacora: () => void;
+  onLaunchNotes: () => void;
+  onLaunchDocs: () => void;
 }
 
 export const StartupLanding: React.FC<StartupLandingProps> = ({
   onLaunchKiosk,
   onLaunchDashboard,
-  onLaunchBitacora
+  onLaunchBitacora,
+  onLaunchNotes,
+  onLaunchDocs
 }) => {
   // Calculadora interactiva de ahorro en obra civil
   const [numTrabajadores, setNumTrabajadores] = useState<number>(120);
@@ -76,11 +83,27 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
                 </button>
 
                 <button
+                  onClick={onLaunchNotes}
+                  className="px-5 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm transition-all shadow-sm flex items-center gap-2"
+                >
+                  <FileSpreadsheet className="w-4 h-4" />
+                  <span>Notas de Obra & Excel</span>
+                </button>
+
+                <button
+                  onClick={onLaunchDocs}
+                  className="px-5 py-3.5 bg-white hover:bg-slate-50 text-slate-800 font-semibold rounded-xl text-sm transition-all border border-slate-300 shadow-sm flex items-center gap-2"
+                >
+                  <BookOpen className="w-4 h-4 text-amber-600" />
+                  <span>Documentación Oficial</span>
+                </button>
+
+                <button
                   onClick={onLaunchDashboard}
-                  className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-sm transition-all shadow-sm flex items-center gap-2"
+                  className="px-5 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-sm transition-all shadow-sm flex items-center gap-2"
                 >
                   <Activity className="w-4 h-4 text-amber-400" />
-                  <span>Panel de Control & Novedades SST</span>
+                  <span>Panel SST</span>
                 </button>
               </div>
 
@@ -134,6 +157,48 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
 
           </div>
 
+        </div>
+      </section>
+
+      {/* Sección Destacada: Actualizaciones Recientes (CRUD Notes + Excel + Documentación) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-r from-amber-500/10 via-emerald-500/10 to-blue-500/10 border-2 border-amber-500/30 rounded-2xl p-6 shadow-sm">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="bg-amber-500 text-slate-950 text-xs font-black px-2 py-0.5 rounded tracking-wide">
+                  NUEVO EN ESTA VERSIÓN
+                </span>
+                <span className="text-xs font-bold text-slate-700">
+                  Integración Cloud & Exportación
+                </span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900">
+                Bitácora de Notas Supabase con Descarga a Excel y Documentación de Arquitectura
+              </h3>
+              <p className="text-xs text-slate-600 max-w-3xl">
+                Accede directamente al nuevo gestor de notas con CRUD conectado a la tabla <code className="bg-slate-200 px-1 py-0.5 rounded text-slate-800">notes</code> de Supabase, visor raw JSON y exportador a hojas de cálculo Excel, además del manual de arquitectura técnica de portería.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2.5 flex-shrink-0">
+              <button
+                onClick={onLaunchNotes}
+                className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center gap-1.5"
+              >
+                <FileSpreadsheet className="w-4 h-4" />
+                <span>Abrir Notas & Excel</span>
+              </button>
+
+              <button
+                onClick={onLaunchDocs}
+                className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center gap-1.5"
+              >
+                <Database className="w-4 h-4 text-amber-400" />
+                <span>Ver Documentación</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
