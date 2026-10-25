@@ -175,11 +175,9 @@ export const DashboardSST: React.FC<DashboardSSTProps> = ({ workers, bitacora, r
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <img 
-                      src={w.foto_perfil_url} 
-                      alt={w.nombre_completo}
-                      className="w-10 h-10 rounded-lg object-cover border border-slate-700" 
-                    />
+                    <div className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center font-mono font-bold text-xs text-amber-400 shrink-0">
+                      {w.nombre_completo.split(' ').slice(0, 2).map(n => n[0]).join('')}
+                    </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-white truncate">{w.nombre_completo}</span>

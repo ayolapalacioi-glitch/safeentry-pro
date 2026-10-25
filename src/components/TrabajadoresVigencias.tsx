@@ -10,7 +10,8 @@ import {
   FileCheck, 
   Anchor, 
   Edit3, 
-  Search
+  Search,
+  User
 } from 'lucide-react';
 import type { Worker } from '../types';
 import { updateWorkerVigencias, addDaysToToday } from '../services/dataService';
@@ -111,11 +112,12 @@ export const TrabajadoresVigencias: React.FC<TrabajadoresVigenciasProps> = ({ wo
               <div>
                 {/* Header Card */}
                 <div className="flex items-start gap-3">
-                  <img
-                    src={w.foto_perfil_url}
-                    alt={w.nombre_completo}
-                    className="w-12 h-12 rounded-lg object-cover border border-slate-700"
-                  />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 flex flex-col items-center justify-center text-amber-400 font-bold font-mono text-sm shadow-inner shrink-0 relative overflow-hidden">
+                    <User className="w-5 h-5 text-slate-400 mb-0.5" />
+                    <span className="text-[9px] text-amber-400 font-bold tracking-tight">
+                      {w.nombre_completo.split(' ').slice(0, 2).map(n => n[0]).join('')}
+                    </span>
+                  </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] font-mono font-bold text-amber-400">

@@ -40,7 +40,7 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ record, onClose })
           {/* Photo Container with Tactical Stamping */}
           <div className="relative rounded-lg overflow-hidden border border-slate-700 aspect-video bg-black flex items-center justify-center">
             <img
-              src={record.foto_evidencia_url || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop'}
+              src={record.foto_evidencia_url || 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80'}
               alt="Evidencia Forense"
               className="w-full h-full object-cover"
             />

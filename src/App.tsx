@@ -11,7 +11,7 @@ import { DashboardSST } from './components/DashboardSST';
 import { BitacoraLedger } from './components/BitacoraLedger';
 import { TrabajadoresVigencias } from './components/TrabajadoresVigencias';
 import { ExpedienteMensual } from './components/ExpedienteMensual';
-import { NotesCrudView } from './components/NotesCrudView';
+import { ExcelContratistasView } from './components/ExcelContratistasView';
 import { UserManualView } from './components/UserManualView';
 import { ConfigSupabaseModal } from './components/ConfigSupabaseModal';
 import { EvidenceModal } from './components/EvidenceModal';
@@ -183,7 +183,10 @@ export function App() {
           )}
 
           {activeTab === 'notas' && (
-            <NotesCrudView />
+            <ExcelContratistasView 
+              workers={workers} 
+              onWorkersReloaded={reloadData} 
+            />
           )}
 
           {activeTab === 'manual' && (

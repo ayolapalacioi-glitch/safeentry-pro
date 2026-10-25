@@ -7,7 +7,8 @@ import React, { useState } from 'react';
 import { 
   FolderArchive, 
   Calendar, 
-  Printer
+  Printer,
+  User
 } from 'lucide-react';
 import type { Worker, BitacoraIngreso } from '../types';
 
@@ -108,11 +109,12 @@ export const ExpedienteMensual: React.FC<ExpedienteMensualProps> = ({ workers, b
           {/* Official Dossier Header */}
           <div className="border-b-2 border-slate-800 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <img
-                src={worker.foto_perfil_url}
-                alt={worker.nombre_completo}
-                className="w-16 h-16 rounded-xl object-cover border-2 border-slate-700"
-              />
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-slate-700 flex flex-col items-center justify-center text-amber-400 font-bold font-mono text-base shadow-inner shrink-0 relative overflow-hidden">
+                <User className="w-6 h-6 text-slate-400 mb-0.5" />
+                <span className="text-[10px] text-amber-400 font-bold tracking-tight">
+                  {worker.nombre_completo.split(' ').slice(0, 2).map(n => n[0]).join('')}
+                </span>
+              </div>
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 bg-amber-950/60 border border-amber-800/60 px-2 py-0.5 rounded font-bold">
                   EXPEDIENTE INDIVIDUAL AUDITABLE · SG-SST

@@ -83,7 +83,7 @@ export const UserManualView: React.FC = () => {
           }`}
         >
           <ShieldCheck className="w-4 h-4" />
-          <span>3. Protocolo Semáforo SST</span>
+          <span>3. Protocolo de Aptitud & Estados SST</span>
         </button>
 
         <button
@@ -202,7 +202,7 @@ export const UserManualView: React.FC = () => {
                 <span className="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-sm">
                   3
                 </span>
-                Interpretación y Acciones del Semáforo SG-SST
+                Interpretación y Acciones de Aptitud SG-SST (Verde / Amarillo / Rojo)
               </h2>
               <p className="text-xs text-slate-600 mt-1">
                 Reglas claras de respuesta para el personal de vigilancia y el coordinador SISO.

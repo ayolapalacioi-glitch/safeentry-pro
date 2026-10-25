@@ -90,8 +90,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       id: 'dashboard' as NavTab,
       label: 'Control SST & Novedades',
       icon: Activity,
-      badge: 'Semáforo',
-      badgeColor: 'bg-blue-100 text-blue-800'
+      badge: null
     },
     {
       id: 'bitacora' as NavTab,
@@ -115,10 +114,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
     },
     {
       id: 'notas' as NavTab,
-      label: 'Notas de Obra',
+      label: 'Censo & Carga Excel',
       icon: FileSpreadsheet,
-      badge: 'Excel',
-      badgeColor: 'bg-emerald-500 text-white font-bold'
+      badge: 'XLSX / CSV',
+      badgeColor: 'bg-emerald-600 text-white font-bold'
     },
     {
       id: 'manual' as NavTab,
@@ -152,39 +151,39 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Main Sidebar */}
       <aside
-        className={`fixed md:sticky top-0 left-0 h-screen z-50 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 shadow-sm select-none ${
+        className={`fixed md:sticky top-0 left-0 h-screen z-50 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 shadow-sm select-none relative ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         } ${
           isCollapsed ? 'w-20' : 'w-64'
         }`}
       >
-        {/* Brand Header */}
-        <div className="h-16 px-4 border-b border-slate-100 flex items-center justify-between">
-          <div className="flex items-center gap-3 overflow-hidden">
-            <div className="h-10 w-10 shrink-0 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 font-extrabold shadow-sm">
-              <ShieldCheck className="w-5 h-5 text-amber-600" />
-            </div>
-            {!isCollapsed && (
-              <div className="truncate">
-                <div className="flex items-center gap-1.5 font-black text-slate-900 tracking-tight text-base font-sans">
-                  <span>SafeEntry</span>
-                  <span className="text-amber-600">PRO</span>
-                </div>
-                <p className="text-[10px] text-slate-600 font-semibold uppercase tracking-wider truncate">
-                  Enterprise Construction OS
-                </p>
-              </div>
-            )}
-          </div>
+        {/* Desktop Collapse Toggle (Floated on outer right rail so it never collides with logo) */}
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="hidden md:flex absolute -right-3 top-5 z-50 w-6 h-6 items-center justify-center bg-white border border-slate-300 shadow-md hover:shadow-lg rounded-full text-slate-600 hover:text-amber-600 hover:border-amber-400 transition-all hover:scale-110"
+          title={isCollapsed ? 'Expandir menú lateral' : 'Colapsar menú lateral'}
+        >
+          {isCollapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronLeft className="w-3.5 h-3.5" />}
+        </button>
 
-          {/* Desktop Collapse Toggle */}
-          <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className="hidden md:flex p-1.5 rounded-lg hover:bg-slate-100 text-slate-600 hover:text-slate-800 transition-colors"
-            title={isCollapsed ? 'Expandir menú' : 'Colapsar menú'}
-          >
-            {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
-          </button>
+        {/* Brand Header */}
+        <div className={`h-16 border-b border-slate-100 flex items-center transition-all ${
+          isCollapsed ? 'justify-center px-2' : 'justify-start px-4 gap-3'
+        }`}>
+          <div className="h-10 w-10 shrink-0 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 font-extrabold shadow-sm">
+            <ShieldCheck className="w-5 h-5 text-amber-600" />
+          </div>
+          {!isCollapsed && (
+            <div className="truncate">
+              <div className="flex items-center gap-1.5 font-black text-slate-900 tracking-tight text-base font-sans">
+                <span>SafeEntry</span>
+                <span className="text-amber-600">PRO</span>
+              </div>
+              <p className="text-[10px] text-slate-600 font-semibold uppercase tracking-wider truncate">
+                Enterprise Construction OS
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Navigation List */}
