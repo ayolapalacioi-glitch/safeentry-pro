@@ -91,7 +91,7 @@ export const ConfigSupabaseModal: React.FC = () => {
           <div className="flex items-center gap-2">
             <Database className="w-5 h-5 text-amber-400" />
             <h1 className="text-xl font-bold text-white tracking-tight font-mono">
-              Central de Datos & Resiliencia en Obra · 4·90 Espacios
+              Central de Datos & Resiliencia en Obra
             </h1>
           </div>
           <p className="text-xs text-slate-400 mt-1">
@@ -192,7 +192,7 @@ export const ConfigSupabaseModal: React.FC = () => {
               <div className="flex items-center gap-2">
                 <HardDrive className="w-4 h-4 text-amber-400" />
                 <h2 className="text-sm font-bold text-white uppercase font-mono tracking-wider">
-                  Almacén Autónomo Local (Portería 4·90)
+                  Almacén Autónomo Local (Portería de Obra)
                 </h2>
               </div>
               <span className="text-[10px] bg-amber-950 text-amber-300 border border-amber-800 font-bold px-2 py-0.5 rounded font-mono">

@@ -1,5 +1,5 @@
 // ==============================================================================
-// VISTA CORPORATIVA: 4·90 ESPACIOS S.A.S. - CONTROL INTELIGENTE DE OBRA & SG-SST
+// VISTA CORPORATIVA: SAFEENTRY PRO - CONTROL INTELIGENTE DE OBRA & SG-SST
 // Diseño Arquitectónico Profesional, Limpio y Enfocado a Resultados de Construcción
 // ==============================================================================
 
@@ -57,7 +57,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
               
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold tracking-wide">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                4·90 ESPACIOS S.A.S. · DIVISIÓN DE OBRAS CIVILES
+                SAFEENTRY PRO · PLATAFORMA UNIVERSAL PARA CONSTRUCCIÓN
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
@@ -66,7 +66,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
               </h1>
 
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
-                Solución operativa diseñada a la medida de las obras de <strong className="text-slate-900">4·90 Espacios</strong>: 
+                Solución integral de misión crítica para proyectos de obras civiles e infraestructura: 
                 audita en menos de 1.5 segundos la identidad del obrero, verifica que porte sus 6 implementos obligatorios 
                 y valida en tiempo real la vigencia de su ARL y Curso de Alturas antes de autorizar el ingreso.
               </p>
@@ -129,8 +129,8 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white aspect-[4/3] bg-slate-100">
                 <img
-                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&auto=format&fit=crop&q=80"
-                  alt="Personal en Obra 4·90 Espacios con dotación EPP"
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80"
+                  alt="Personal e ingenieros en obra civil con dotación EPP y planos"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
@@ -145,7 +145,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
                     <span className="text-slate-500 font-mono text-[11px]">06:52:14 AM</span>
                   </div>
                   <p className="text-[11px] text-slate-600 mt-1">
-                    Carlos Andrés Pérez · Oficial Estructuras 4·90 Espacios
+                    Carlos Andrés Pérez · Oficial de Estructuras (Cuadrilla Encofrado)
                   </p>
                   <div className="mt-1 flex items-center justify-between text-[10px] text-slate-500 border-t border-slate-100 pt-1">
                     <span>Dotación EPP: 6/6 Conforme</span>
@@ -202,7 +202,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
         </div>
       </section>
 
-      {/* Los 3 Pilares Operativos para 4·90 Espacios */}
+      {/* Los 3 Pilares Operativos de Control */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-2 mb-10">
           <span className="text-xs font-bold text-amber-600 uppercase tracking-widest font-mono">
@@ -329,14 +329,14 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
 
             <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 group border border-slate-200">
               <img
-                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&auto=format&fit=crop&q=80"
-                alt="Maestro de obra y supervisión técnica"
+                src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=600&auto=format&fit=crop&q=80"
+                alt="Estructura de edificio civil y grúas de construcción"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div className="absolute bottom-3 left-3 right-3 text-white">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400">Supervisión en Terreno</span>
-                <p className="text-xs font-bold leading-tight mt-0.5">Control para contratistas y maestros de obra</p>
+                <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400">Edificación & Estructuras</span>
+                <p className="text-xs font-bold leading-tight mt-0.5">Control perimetral para cuadrillas y contratistas</p>
               </div>
             </div>
 
@@ -344,7 +344,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
         </div>
       </section>
 
-      {/* Calculadora de Ahorro para Gerencia de 4·90 Espacios */}
+      {/* Calculadora de Ahorro para Gerencia de Obra */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -354,7 +354,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
                 Retorno de Inversión en Obra
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Impacto Financiero Directo para 4·90 Espacios
+                Impacto Financiero Directo en Obra Civil
               </h2>
               <p className="text-xs text-slate-300 leading-relaxed">
                 Liquida únicamente las horas realmente trabajadas por obreros y subcontratistas. 
@@ -365,7 +365,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
               <div className="space-y-4 pt-3">
                 <div>
                   <div className="flex justify-between text-xs font-mono text-slate-300 mb-1.5">
-                    <span>Personal total en obra (cuadrillas 4·90):</span>
+                    <span>Personal total en obra (todas las cuadrillas):</span>
                     <span className="text-amber-400 font-bold">{numTrabajadores} trabajadores</span>
                   </div>
                   <input
@@ -434,7 +434,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
       <section className="max-w-4xl mx-auto px-4 text-center pb-6">
         <div className="bg-white border border-slate-200 rounded-2xl p-8 space-y-4 shadow-sm">
           <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900">
-            Comencemos la demostración operativa para 4·90 Espacios
+            Comencemos la Demostración Operativa en Vivo
           </h3>
           <p className="text-xs text-slate-600 max-w-lg mx-auto">
             Accede al kiosco en vivo, valida las cuadrillas y revisa la bitácora legal inalterable con fotos de evidencia.

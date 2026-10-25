@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS public.notes (
   title TEXT NOT NULL,
   content TEXT,
   categoria TEXT DEFAULT 'GENERAL',
-  autor TEXT DEFAULT 'Inspector SST 4·90',
+  autor TEXT DEFAULT 'Inspector SST',
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 

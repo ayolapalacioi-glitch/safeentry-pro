@@ -1,5 +1,5 @@
 // ==============================================================================
-// COMPONENTE HEADER: BRANDING CORPORATIVO 4·90 ESPACIOS S.A.S.
+// COMPONENTE HEADER: BRANDING ENTERPRISE SAFEENTRY PRO
 // ==============================================================================
 
 import React, { useState, useEffect } from 'react';
@@ -40,23 +40,23 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, syncSta
     <header className="bg-white border-b border-slate-200 sticky top-0 z-50 px-4 lg:px-8 py-3 shadow-sm">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
         
-        {/* Brand: 4·90 ESPACIOS S.A.S. */}
+        {/* Brand: Universal Enterprise Platform */}
         <div className="flex items-center space-x-3.5">
           <div className="h-10 w-10 rounded-lg bg-amber-500/10 border border-amber-500/40 flex items-center justify-center text-amber-600 font-extrabold font-mono text-base shadow-sm">
-            4·90
+            SE
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="font-extrabold tracking-tight text-slate-900 text-lg font-sans">
-                4·90 <span className="text-amber-600 font-bold">ESPACIOS</span>
+                SafeEntry <span className="text-amber-600 font-bold">PRO</span>
               </span>
               <span className="bg-slate-100 text-slate-700 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded border border-slate-200">
-                S.A.S. · OBRAS CIVILES
+                ENTERPRISE · OBRAS CIVILES
               </span>
             </div>
             <p className="text-xs text-slate-500 font-medium flex items-center gap-1.5">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              Obra: <span className="text-slate-800 font-semibold">Proyecto Residencial & Comercial 4·90 · Portería</span>
+              Operación: <span className="text-slate-800 font-semibold">Portería Principal & Punto de Control SG-SST</span>
             </p>
           </div>
         </div>
@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, syncSta
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
             }`}
           >
-            Presentación 4·90
+            Plataforma Universal
           </button>
 
           <button

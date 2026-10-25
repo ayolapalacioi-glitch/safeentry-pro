@@ -1,5 +1,5 @@
 // ==============================================================================
-// CRUD DE NOTAS & NOVEDADES DE OBRA · 4·90 ESPACIOS S.A.S.
+// CRUD DE NOTAS & NOVEDADES DE OBRA · SAFEENTRY PRO
 // Conexión Supabase (PostgreSQL) + Exportación Excel + Raw JSON Viewer
 // ==============================================================================
 
@@ -33,7 +33,7 @@ export const NotesCrudView: React.FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [categoria, setCategoria] = useState<Note['categoria']>('GENERAL');
-  const [autor, setAutor] = useState('Inspector SST 4·90');
+  const [autor, setAutor] = useState('Inspector SST');
   const [saving, setSaving] = useState(false);
 
   const isConfigured = getSupabaseConfig().isConnected;
@@ -54,7 +54,7 @@ export const NotesCrudView: React.FC = () => {
     setTitle('');
     setContent('');
     setCategoria('GENERAL');
-    setAutor('Inspector SST 4·90');
+    setAutor('Inspector SST');
     setIsModalOpen(true);
   };
 
@@ -63,7 +63,7 @@ export const NotesCrudView: React.FC = () => {
     setTitle(note.title);
     setContent(note.content || '');
     setCategoria(note.categoria || 'GENERAL');
-    setAutor(note.autor || 'Inspector SST 4·90');
+    setAutor(note.autor || 'Inspector SST');
     setIsModalOpen(true);
   };
 
@@ -124,7 +124,7 @@ export const NotesCrudView: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1 max-w-2xl">
-            Registro diario de anotaciones de interventoría, inspecciones de seguridad y novedades de cuadrilla para <strong className="text-slate-800">4·90 Espacios S.A.S.</strong>
+            Registro diario de anotaciones de interventoría, inspecciones de seguridad y novedades de cuadrilla para <strong className="text-slate-800">Proyectos de Obra Civil & Construcción</strong>
           </p>
         </div>
 
@@ -278,7 +278,7 @@ export const NotesCrudView: React.FC = () => {
               <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
                 <div className="flex items-center gap-1.5 truncate max-w-[170px]" title={n.autor}>
                   <User className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                  <span className="truncate">{n.autor || '4·90 Espacios'}</span>
+                  <span className="truncate">{n.autor || 'Supervisión de Obra'}</span>
                 </div>
 
                 <div className="flex items-center gap-1 shrink-0">

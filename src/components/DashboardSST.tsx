@@ -56,7 +56,7 @@ export const DashboardSST: React.FC<DashboardSSTProps> = ({ workers, bitacora, r
         <div>
           <div className="flex items-center gap-2">
             <Building2 className="w-5 h-5 text-amber-400" />
-            <h1 className="text-xl font-bold text-white tracking-tight">Centro de Control SG-SST · 4·90 Espacios S.A.S.</h1>
+            <h1 className="text-xl font-bold text-white tracking-tight">Centro de Control SG-SST · Portería de Obra</h1>
           </div>
           <p className="text-xs text-slate-400 mt-1">
             Supervisión continua en obra conforme a la Resolución 0312 de 2019 y Resolución 4272 de 2021.

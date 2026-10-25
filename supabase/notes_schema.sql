@@ -1,5 +1,5 @@
 -- ==============================================================================
--- TABLA DE NOTAS Y NOVEDADES DE OBRA (SUPABASE POSTGRESQL) - 4·90 ESPACIOS S.A.S.
+-- TABLA DE NOTAS Y NOVEDADES DE OBRA (SUPABASE POSTGRESQL) - SAFEENTRY PRO
 -- ==============================================================================
 
 -- 1. Crear tabla notes con soporte de id identity y campos de bitácora
@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS public.notes (
   title TEXT NOT NULL,
   content TEXT,
   categoria TEXT DEFAULT 'GENERAL',
-  autor TEXT DEFAULT 'Inspector SST 4·90',
+  autor TEXT DEFAULT 'Inspector SST',
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -40,11 +40,11 @@ ON public.notes
 FOR DELETE TO anon, authenticated
 USING (true);
 
--- 4. Datos de ejemplo iniciales (Starter + Obras 4·90 Espacios)
+-- 4. Datos de ejemplo iniciales (Starter + Obras Civiles)
 INSERT INTO public.notes (title, content, categoria, autor)
 VALUES
   ('Today I created a Supabase project.', 'Conexión inicial de base de datos relacional PostgreSQL con políticas RLS activadas.', 'GENERAL', 'Ingeniero de Desarrollo'),
   ('I added some data and queried it from Next.js.', 'Verificación de consultas en tiempo real y sincronización en la nube.', 'GENERAL', 'Ingeniero de Desarrollo'),
   ('It was awesome!', 'El sistema de bitácora y auditoría legal quedó operativo y listo para producción.', 'GENERAL', 'Director Técnico'),
-  ('Inspección de líneas de vida Torre 4·90', 'Revisión técnica de anclajes de alturas en piso 12 conforme a Resolución 4272/2021. Todo conforme.', 'SEGURIDAD_SST', 'Coordinador Alturas 4·90'),
-  ('Verificación de planilla PILA cuadrilla encofrado', 'Se cruzaron 18 obreros con ARL Seguros Bolívar. Se cargó soporte vigente hasta fin de mes.', 'PERSONAL', 'Administración 4·90');
+  ('Inspección de líneas de vida Torre Principal', 'Revisión técnica de anclajes de alturas en piso 12 conforme a Resolución 4272/2021. Todo conforme.', 'SEGURIDAD_SST', 'Coordinador Alturas'),
+  ('Verificación de planilla PILA cuadrilla encofrado', 'Se cruzaron 18 obreros con ARL Seguros Bolívar. Se cargó soporte vigente hasta fin de mes.', 'PERSONAL', 'Administración de Obra');

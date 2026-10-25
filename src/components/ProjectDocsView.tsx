@@ -1,5 +1,5 @@
 // ==============================================================================
-// DOCUMENTACIÓN OFICIAL DEL PROYECTO · 4·90 ESPACIOS S.A.S.
+// DOCUMENTACIÓN OFICIAL DEL PROYECTO · SAFEENTRY PRO
 // Especificaciones Técnicas, Arquitectura de Base de Datos y Manual Operativo SG-SST
 // ==============================================================================
 
@@ -30,7 +30,7 @@ create table if not exists public.notes (
   title text not null,
   content text,
   categoria text default 'GENERAL',
-  autor text default 'Inspector SST 4·90',
+  autor text default 'Inspector SST',
   created_at timestamptz default now()
 );
 
@@ -44,7 +44,7 @@ create policy "public can delete notes" on public.notes for delete to anon, auth
 insert into public.notes (title, content, categoria, autor) values
   ('Today I created a Supabase project.', 'Conexión inicial de base de datos relacional PostgreSQL con RLS.', 'GENERAL', 'Ingeniero de Desarrollo'),
   ('I added some data and queried it from Next.js.', 'Verificación de consultas en tiempo real y sincronización en nube.', 'GENERAL', 'Ingeniero de Desarrollo'),
-  ('It was awesome!', 'El sistema de bitácora y auditoría legal quedó operativo y listo para producción.', 'GENERAL', 'Director Técnico 4·90');`;
+  ('It was awesome!', 'El sistema de bitácora y auditoría legal quedó operativo y listo para producción.', 'GENERAL', 'Director Técnico de Obra');`;
 
   const sqlFullSchemaSnippet = `-- 1. TABLA CENSO Y VIGENCIAS SST
 CREATE TABLE IF NOT EXISTS public.trabajadores_vigencias (
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS public.trabajadores_vigencias (
     cedula VARCHAR(20) UNIQUE NOT NULL,
     nombre_completo VARCHAR(150) NOT NULL,
     cargo VARCHAR(80) NOT NULL,
-    empresa_contratista VARCHAR(120) DEFAULT '4·90 ESPACIOS S.A.S.',
+    empresa_contratista VARCHAR(120) DEFAULT 'Consorcio Constructor Principal',
     arl_entidad VARCHAR(50) NOT NULL,
     arl_fecha_vencimiento DATE NOT NULL,
     alturas_requerido BOOLEAN DEFAULT true,
@@ -103,7 +103,7 @@ FOR EACH ROW EXECUTE FUNCTION public.fn_blindaje_bitacora_inmutable();`;
           Arquitectura de Software & Manual de Control en Obra
         </h1>
         <p className="text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
-          Especificación integral del sistema desarrollado para <strong className="text-slate-900">4·90 ESPACIOS S.A.S.</strong>, 
+          Especificación integral del sistema universal de control operativo y seguridad en obra civil, 
           cubriendo la base de datos relacional en Supabase, el almacén autónomo de portería, los flujos duraderos de Vercel Workflows y las reglas de decisión del semáforo.
         </p>
       </div>

@@ -14,8 +14,8 @@ export default defineEventHandler(async (event: any) => {
 
   return {
     success: true,
-    message: "Workflow de Auditoría SST 4·90 Espacios iniciado exitosamente",
+    message: "Workflow de Auditoría SST iniciado exitosamente",
     runId: (run as any)?.id || "run-local",
-    empresa: "4·90 ESPACIOS S.A.S."
+    plataforma: "SafeEntry Enterprise OS"
   };
 });

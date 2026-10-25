@@ -24,7 +24,7 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
     workerCedula: '1045821900',
     workerName: 'Carlos Andrés Pérez',
     cargo: 'Oficial de Alturas & Estructura',
-    imageFallback: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&auto=format&fit=crop&q=80',
+    imageFallback: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
     detections: {
       helmet: { key: 'helmet', label: 'Casco Dielectrico', detected: true, confidence: 99.4, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Seguridad', detected: true, confidence: 96.8, box: [0.22, 0.38, 0.28, 0.62], required: true },

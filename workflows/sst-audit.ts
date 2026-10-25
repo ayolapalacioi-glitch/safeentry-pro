@@ -3,7 +3,7 @@ import { sleep, FatalError } from "workflow";
 // Step 1: Auditar vigencias legales del trabajador (ARL + Curso de Alturas)
 async function auditarVigenciasObrero(data: { cedula: string; nombre: string; cargo: string }) {
   "use step";
-  console.log(`[Workflow 4·90 Espacios] Auditando vigencias SST para ${data.nombre} (C.C. ${data.cedula})...`);
+  console.log(`[SafeEntry Workflow] Auditando vigencias SST para ${data.nombre} (C.C. ${data.cedula})...`);
   
   if (!data.cedula) {
     throw new FatalError("Cédula de trabajador inválida");
@@ -18,17 +18,17 @@ async function auditarVigenciasObrero(data: { cedula: string; nombre: string; ca
   };
 }
 
-// Step 2: Notificar al Inspector SISO de 4·90 Espacios si hay novedad
+// Step 2: Notificar al Inspector SISO de Obra si hay novedad
 async function notificarInspectorSISO(auditResult: { cedula: string; nombre: string; cargo: string; vigente: boolean }) {
   "use step";
-  console.log(`[Workflow SISO] Notificación emitida para inspector en obra 4·90 Espacios: ${auditResult.nombre}`);
+  console.log(`[Workflow SISO] Notificación emitida para inspector en obra: ${auditResult.nombre}`);
   return { notificado: true, fecha: new Date().toISOString() };
 }
 
 // Step 3: Enviar alerta preventiva a RRHH antes de vencimiento
 async function enviarAlertaVencimientoPILA(data: { cedula: string; nombre: string }) {
   "use step";
-  console.log(`[Workflow Alerta PILA] Despachando recordatorio a RRHH 4·90 Espacios para obrero: ${data.nombre}`);
+  console.log(`[Workflow Alerta PILA] Despachando recordatorio a RRHH / Contratista para obrero: ${data.nombre}`);
   return { alertaEnviada: true, fecha: new Date().toISOString() };
 }
 
@@ -51,6 +51,6 @@ export async function workflowAuditoriaSST(cedula: string, nombre: string, cargo
   return {
     status: "COMPLETED",
     cedula,
-    empresa: "4·90 ESPACIOS S.A.S."
+    plataforma: "SafeEntry Enterprise OS"
   };
 }

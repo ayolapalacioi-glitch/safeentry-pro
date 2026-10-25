@@ -238,7 +238,7 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
           <div className="bg-[#0b101a] px-4 py-2.5 border-b border-slate-800 flex items-center justify-between text-xs font-mono text-slate-300">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-              <span className="font-bold text-slate-200">CAM-01 PORTERÍA 4·90 ESPACIOS</span>
+              <span className="font-bold text-slate-200">CAM-01 PORTERÍA PRINCIPAL · ACCESO OBRA</span>
               <span className="text-slate-500">|</span>
               <span className="text-slate-400">RTSP 1080p · EN VIVO</span>
             </div>

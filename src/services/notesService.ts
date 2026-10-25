@@ -1,6 +1,6 @@
 // ==============================================================================
 // SERVICIO CRUD DE NOTAS & NOVEDADES DE OBRA (SUPABASE POSTGRESQL + LOCAL CACHE)
-// Compatible con la tabla 'notes' y exportación oficial a Excel / CSV para 4·90 Espacios
+// Compatible con la tabla 'notes' y exportación oficial a Excel / CSV
 // ==============================================================================
 
 import { supabase } from './supabaseClient';
@@ -28,15 +28,15 @@ const INITIAL_NOTES: Note[] = [
     title: 'It was awesome!',
     content: 'El sistema de bitácora y auditoría legal quedó operativo y listo para producción.',
     categoria: 'GENERAL',
-    autor: 'Director Técnico 4·90',
+    autor: 'Director Técnico de Obra',
     created_at: new Date(Date.now() - 3600000 * 6).toISOString()
   },
   {
     id: 4,
-    title: 'Inspección de líneas de vida Torre 4·90',
+    title: 'Inspección de líneas de vida Torre Principal',
     content: 'Revisión técnica de anclajes de alturas en piso 12 conforme a Resolución 4272/2021. Todo conforme.',
     categoria: 'SEGURIDAD_SST',
-    autor: 'Coordinador Alturas 4·90',
+    autor: 'Coordinador Alturas SG-SST',
     created_at: new Date(Date.now() - 3600000 * 2).toISOString()
   },
   {
@@ -44,7 +44,7 @@ const INITIAL_NOTES: Note[] = [
     title: 'Verificación de planilla PILA cuadrilla encofrado',
     content: 'Se cruzaron 18 obreros con ARL Seguros Bolívar. Se cargó soporte vigente hasta fin de mes.',
     categoria: 'PERSONAL',
-    autor: 'Administración 4·90',
+    autor: 'Administración de Obra',
     created_at: new Date().toISOString()
   }
 ];
@@ -105,7 +105,7 @@ export async function createNote(note: Omit<Note, 'id' | 'created_at'>): Promise
           title: note.title,
           content: note.content || '',
           categoria: note.categoria || 'GENERAL',
-          autor: note.autor || 'Inspector SST 4·90'
+          autor: note.autor || 'Inspector SST'
         }])
         .select()
         .single();
@@ -196,7 +196,7 @@ export function exportNotesToExcel(notes: Note[]) {
   ]);
 
   const metadata = [
-    `"4·90 ESPACIOS S.A.S. - BITACORA DE NOTAS Y NOVEDADES DE OBRA"`,
+    `"SAFEENTRY PRO - BITACORA DE NOTAS Y NOVEDADES DE OBRA"`,
     `"Exportado el: ${fechaStr} a las ${horaStr}"`,
     `"Total Registros: ${notes.length}"`,
     ``
@@ -207,7 +207,7 @@ export function exportNotesToExcel(notes: Note[]) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.setAttribute('href', url);
-  link.setAttribute('download', `490_Espacios_Notas_Obra_${fechaStr}.csv`);
+  link.setAttribute('download', `SafeEntry_Notas_Obra_${fechaStr}.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

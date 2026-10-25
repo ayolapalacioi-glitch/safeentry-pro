@@ -49,7 +49,7 @@ export const EvidenceModal: React.FC<EvidenceModalProps> = ({ record, onClose })
             <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded font-mono text-[11px] text-slate-200 border border-slate-700">
               <div className="text-amber-400 font-bold">HORA EXACTA: {record.hora_exacta_llegada}</div>
               <div>FECHA: {record.fecha}</div>
-              <div>OBRA: 4·90 ESPACIOS S.A.S. - PORTERÍA PRINCIPAL</div>
+              <div>PROYECTO: CONTROL DE ACCESO - PORTERÍA PRINCIPAL</div>
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 bg-black/80 backdrop-blur-md px-3 py-2 rounded font-mono text-[11px] text-slate-200 border border-slate-700 flex items-center justify-between">
