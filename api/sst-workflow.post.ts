@@ -1,6 +1,6 @@
 import { start } from "workflow/api";
 import { defineEventHandler } from "nitro/h3";
-import { workflowAuditoriaSST } from "../workflows/sst-audit";
+import { workflowAuditoriaSST } from "../workflows/sst-audit.js";
 
 export default defineEventHandler(async (event: any) => {
   const body = (await event.req.json()) as { cedula: string; nombre: string; cargo: string };
