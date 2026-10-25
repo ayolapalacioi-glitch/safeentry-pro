@@ -53,9 +53,9 @@ export async function testSupabaseConnection(): Promise<{ success: boolean; mess
   try {
     const { error } = await supabase.from('trabajadores_vigencias').select('count', { count: 'exact', head: true });
     if (error) {
-      return { success: false, message: `Error de conexión con Supabase: ${error.message}` };
+      return { success: false, message: `Error de enlace con el Servidor Central: ${error.message}` };
     }
-    return { success: true, message: 'Conexión verificada exitosamente con PostgreSQL Supabase.' };
+    return { success: true, message: 'Conexión verificada exitosamente con el Servidor Central en la Nube.' };
   } catch (err: any) {
     return { success: false, message: `Fallo de red o credencial: ${err.message || 'Desconocido'}` };
   }

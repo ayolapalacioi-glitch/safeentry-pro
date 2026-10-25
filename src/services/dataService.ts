@@ -119,8 +119,8 @@ export const INITIAL_WORKERS: Worker[] = [
     id: 'w-98712330',
     cedula: '98712330',
     nombre_completo: 'Jorge Eliecer Ramírez',
-    cargo: 'Soldador Estructural',
-    empresa_contratista: 'Montajes & Soldadura Industrial',
+    cargo: 'Oficial de Armado & Encofrado',
+    empresa_contratista: 'Estructuras de Concreto & Aceros S.A.S.',
     grupo_sanguineo: 'B+',
     arl_entidad: 'ARL SURA',
     arl_fecha_vencimiento: addDaysToToday(6), // Pre-alerta (<= 15 días)
@@ -132,7 +132,7 @@ export const INITIAL_WORKERS: Worker[] = [
     examen_medico_vencimiento: addDaysToToday(120),
     epp_requeridos: ['helmet', 'goggles', 'reflective_vest', 'safety_harness', 'gloves', 'safety_boots'],
     estado: 'ACTIVO',
-    foto_perfil_url: 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=600&auto=format&fit=crop&q=80',
+    foto_perfil_url: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=600&auto=format&fit=crop&q=80',
     color_semaforo: 'AMARILLO'
   },
   {

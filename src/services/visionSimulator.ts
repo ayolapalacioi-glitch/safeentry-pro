@@ -41,7 +41,7 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
     workerCedula: '1032441205',
     workerName: 'Brayan Alexis Martínez',
     cargo: 'Ayudante Práctico de Obra',
-    imageFallback: 'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=800&auto=format&fit=crop&q=80',
+    imageFallback: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&auto=format&fit=crop&q=80',
     detections: {
       helmet: { key: 'helmet', label: 'Casco Obra', detected: true, confidence: 98.7, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Seguridad', detected: false, confidence: 12.3, required: true },

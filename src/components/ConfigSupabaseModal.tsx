@@ -70,14 +70,14 @@ export const ConfigSupabaseModal: React.FC = () => {
     setSyncing(true);
     setSyncFeedback(null);
     const res = await syncEngine.processSyncQueue();
-    setSyncFeedback(`Sincronización completada: ${res.synced} subidos a Supabase, ${res.failed} pendientes.`);
+    setSyncFeedback(`Sincronización completada: ${res.synced} subidos al Servidor Central, ${res.failed} pendientes.`);
     await loadStats();
     setSyncing(false);
   };
 
   const copySqlCode = () => {
-    navigator.clipboard.writeText(`-- SCHEMA EN RUTA: supabase/schema.sql
--- Ejecutar el archivo schema.sql en el SQL Editor de tu proyecto Supabase para crear las tablas.`);
+    navigator.clipboard.writeText(`-- ESQUEMA DE DATOS CENTRALIZADO
+-- Ejecutar en el gestor de base de datos corporativo para inicializar las tablas de seguridad.`);
     setCopiedSql(true);
     setTimeout(() => setCopiedSql(false), 2500);
   };
@@ -228,7 +228,7 @@ export const ConfigSupabaseModal: React.FC = () => {
             <div className="flex items-center justify-between font-mono text-slate-300 font-bold">
               <span className="flex items-center gap-1">
                 <Terminal className="w-3.5 h-3.5 text-amber-400" />
-                Script SQL Supabase Listo:
+                Script SQL de Seguridad Listo:
               </span>
               <button
                 type="button"
@@ -236,11 +236,11 @@ export const ConfigSupabaseModal: React.FC = () => {
                 className="flex items-center gap-1 text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-200 px-2 py-0.5 rounded border border-slate-700 transition-colors"
               >
                 {copiedSql ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3 text-amber-400" />}
-                <span>{copiedSql ? 'Copiado' : 'Copiar Ruta'}</span>
+                <span>{copiedSql ? 'Copiado' : 'Copiar'}</span>
               </button>
             </div>
             <div className="text-slate-400">
-              El archivo completo está listo en <code className="text-amber-400 font-mono">supabase/schema.sql</code> con tablas, triggers de inmutabilidad, RLS y funciones.
+              Esquema de datos corporativo con tablas, triggers de inmutabilidad y funciones de auditoría listas para producción.
             </div>
           </div>
         </div>

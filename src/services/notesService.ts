@@ -51,7 +51,7 @@ const INITIAL_NOTES: Note[] = [
 
 // Helper para obtener notas del almacenamiento local si no hay conexión
 function getLocalNotes(): Note[] {
-  const saved = localStorage.getItem('490_LOCAL_NOTES');
+  const saved = localStorage.getItem('SAFEENTRY_LOCAL_NOTES');
   if (saved) {
     try {
       return JSON.parse(saved);
@@ -59,12 +59,12 @@ function getLocalNotes(): Note[] {
       // Ignorar
     }
   }
-  localStorage.setItem('490_LOCAL_NOTES', JSON.stringify(INITIAL_NOTES));
+  localStorage.setItem('SAFEENTRY_LOCAL_NOTES', JSON.stringify(INITIAL_NOTES));
   return INITIAL_NOTES;
 }
 
 function saveLocalNotes(notes: Note[]) {
-  localStorage.setItem('490_LOCAL_NOTES', JSON.stringify(notes));
+  localStorage.setItem('SAFEENTRY_LOCAL_NOTES', JSON.stringify(notes));
 }
 
 // 1. READ: Obtener todas las notas
