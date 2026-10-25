@@ -41,7 +41,7 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
     workerCedula: '1032441205',
     workerName: 'Brayan Alexis Martínez',
     cargo: 'Ayudante Práctico de Obra',
-    imageFallback: 'https://images.unsplash.com/photo-1584467735871-8e85353a8413?w=800&auto=format&fit=crop&q=80',
+    imageFallback: 'https://images.unsplash.com/photo-1574359411659-15573a27fd0c?w=800&auto=format&fit=crop&q=80',
     detections: {
       helmet: { key: 'helmet', label: 'Casco Obra', detected: true, confidence: 98.7, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Seguridad', detected: false, confidence: 12.3, required: true },
@@ -54,17 +54,17 @@ export const DEMO_SCENARIOS: VisionScenario[] = [
   {
     id: 'esc-jorge-warning',
     name: '3. Jorge Ramírez (Pre-alerta ARL en 6 días)',
-    description: 'Soldador con EPP completo, pero su cobertura ARL vence en menos de una semana.',
+    description: 'Armador de acero y encofrador con EPP completo, pero su cobertura ARL vence en menos de una semana.',
     workerCedula: '98712330',
     workerName: 'Jorge Eliecer Ramírez',
-    cargo: 'Soldador Estructural',
-    imageFallback: 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=800&auto=format&fit=crop&q=80',
+    cargo: 'Oficial de Armado & Encofrado',
+    imageFallback: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&auto=format&fit=crop&q=80',
     detections: {
-      helmet: { key: 'helmet', label: 'Careta / Casco', detected: true, confidence: 99.1, box: [0.08, 0.32, 0.22, 0.68], required: true },
+      helmet: { key: 'helmet', label: 'Casco Dielectrico', detected: true, confidence: 99.1, box: [0.08, 0.32, 0.22, 0.68], required: true },
       goggles: { key: 'goggles', label: 'Gafas de Seguridad', detected: true, confidence: 95.4, box: [0.22, 0.38, 0.28, 0.62], required: true },
       reflective_vest: { key: 'reflective_vest', label: 'Chaleco Reflectivo', detected: true, confidence: 97.8, box: [0.30, 0.22, 0.65, 0.78], required: true },
       safety_harness: { key: 'safety_harness', label: 'Arnés de Seguridad', detected: true, confidence: 96.0, box: [0.32, 0.25, 0.70, 0.75], required: true },
-      gloves: { key: 'gloves', label: 'Guantes de Carnaza', detected: true, confidence: 98.2, box: [0.55, 0.15, 0.68, 0.30], required: true },
+      gloves: { key: 'gloves', label: 'Guantes de Vaqueta', detected: true, confidence: 98.2, box: [0.55, 0.15, 0.68, 0.30], required: true },
       safety_boots: { key: 'safety_boots', label: 'Botas Punta Acero', detected: true, confidence: 96.9, box: [0.82, 0.30, 0.96, 0.70], required: true },
     }
   },

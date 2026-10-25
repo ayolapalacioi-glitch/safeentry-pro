@@ -120,7 +120,7 @@ export const NotesCrudView: React.FC = () => {
               Bitácora de Notas & Novedades de Obra
             </h1>
             <span className="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono font-bold border border-slate-200">
-              CRUD Supabase (Table: `notes`) · {isConfigured ? 'Producción Cloud' : 'Modo Sincronizado'}
+              Servidor Central de Datos · {isConfigured ? 'Nube Corporativa' : 'Modo Sincronizado'}
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1 max-w-2xl">
@@ -138,7 +138,7 @@ export const NotesCrudView: React.FC = () => {
             }`}
           >
             <Code2 className="w-4 h-4 text-amber-600" />
-            <span>{showJsonRaw ? 'Ver Vista Tarjetas' : 'Ver JSON Supabase'}</span>
+            <span>{showJsonRaw ? 'Ver Vista Tarjetas' : 'Ver JSON del Servidor'}</span>
           </button>
 
           <button
@@ -163,7 +163,7 @@ export const NotesCrudView: React.FC = () => {
       {showJsonRaw && (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl text-xs space-y-3">
           <div className="flex items-center justify-between text-slate-400 font-mono text-[11px] border-b border-slate-800 pb-2">
-            <span>QUERY RESULT FROM SUPABASE (`notes`):</span>
+            <span>REGISTROS EN TIEMPO REAL DEL SERVIDOR CENTRAL:</span>
             <span className="text-amber-400">{filteredNotes.length} registros</span>
           </div>
           <pre className="font-mono text-emerald-400 text-xs overflow-x-auto max-h-96 p-3 bg-black/60 rounded-lg">
@@ -233,7 +233,7 @@ export const NotesCrudView: React.FC = () => {
       {loading ? (
         <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-500 shadow-sm">
           <RefreshCw className="w-8 h-8 animate-spin mx-auto text-amber-600 mb-2" />
-          <p className="text-xs font-semibold">Consultando notas en Supabase...</p>
+          <p className="text-xs font-semibold">Consultando notas en el servidor central...</p>
         </div>
       ) : filteredNotes.length === 0 ? (
         <div className="bg-white border border-dashed border-slate-300 rounded-2xl p-12 text-center text-slate-500">
@@ -314,7 +314,7 @@ export const NotesCrudView: React.FC = () => {
                   {editingNote ? 'Editar Nota de Obra' : 'Registrar Nueva Nota / Novedad'}
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Sincronizado directamente con la tabla `notes` de Supabase
+                  Sincronizado directamente con la base de datos central de obra
                 </p>
               </div>
               <button

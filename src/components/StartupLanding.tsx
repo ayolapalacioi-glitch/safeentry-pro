@@ -15,9 +15,9 @@ import {
   Lock, 
   FileCheck2, 
   ChevronRight,
+  ChevronLeft,
   FileSpreadsheet,
-  BookOpen,
-  Database
+  BookOpen
 } from 'lucide-react';
 
 interface StartupLandingProps {
@@ -25,7 +25,7 @@ interface StartupLandingProps {
   onLaunchDashboard: () => void;
   onLaunchBitacora: () => void;
   onLaunchNotes: () => void;
-  onLaunchDocs: () => void;
+  onLaunchManual: () => void;
 }
 
 export const StartupLanding: React.FC<StartupLandingProps> = ({
@@ -33,12 +33,66 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
   onLaunchDashboard,
   onLaunchBitacora,
   onLaunchNotes,
-  onLaunchDocs
+  onLaunchManual
 }) => {
   // Calculadora interactiva de ahorro en obra civil
   const [numTrabajadores, setNumTrabajadores] = useState<number>(120);
   const [diasMes, setDiasMes] = useState<number>(24);
   
+  // Carrusel interactivo de fotografías de obra civil
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+
+  const carouselSlides = [
+    {
+      id: 1,
+      tag: 'Supervisión Estructural & Control',
+      title: 'Dirección de Obra y Revisión de Planos en Losa',
+      desc: 'Ingenieros residentes y maestros de obra coordinando ejes de cimentación con dotación EPP completa.',
+      imageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&auto=format&fit=crop&q=80',
+      badge: 'Fase Estructuras'
+    },
+    {
+      id: 2,
+      tag: 'Trabajo Seguro en Alturas',
+      title: 'Andamiaje Certificado & Arnés de 4 Argollas',
+      desc: 'Control estricto de certificación Res. 4272/2021 y líneas de vida para vaciado en altura.',
+      imageUrl: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&auto=format&fit=crop&q=80',
+      badge: 'Cero Accidentes'
+    },
+    {
+      id: 3,
+      tag: 'Armado de Acero & Encofrados',
+      title: 'Cuadrilla de Armadores y Mallas de Cimentación',
+      desc: 'Verificación de guantes de vaqueta, gafas y calzado con puntera de acero en maniobras con varilla.',
+      imageUrl: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=1200&auto=format&fit=crop&q=80',
+      badge: 'Seguridad Operativa'
+    },
+    {
+      id: 4,
+      tag: 'Edificación Vertical & Izaje',
+      title: 'Operación con Grúas Torre y Vaciado de Concreto',
+      desc: 'Control perimetral en radio de giro de grúa y verificación de cuadrillas en pisos superiores.',
+      imageUrl: 'https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=1200&auto=format&fit=crop&q=80',
+      badge: 'Alta Productividad'
+    },
+    {
+      id: 5,
+      tag: 'Topografía & Replanteo',
+      title: 'Control Métrico y Niveles de Construcción',
+      desc: 'Topógrafos y cadeneros auditados en portería antes de iniciar mediciones en terreno.',
+      imageUrl: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&auto=format&fit=crop&q=80',
+      badge: 'Precisión Civil'
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
+  };
+
   // 8% de ahorro en ineficiencia de asistencia + jornadas ficticias
   const ahorroNominaEstimado = Math.round(numTrabajadores * diasMes * 19500 * 0.08);
   const riesgoSancionEvitado = 25000000; // Sanción típica Mintrabajo por laborar sin ARL / Alturas
@@ -91,11 +145,11 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
                 </button>
 
                 <button
-                  onClick={onLaunchDocs}
+                  onClick={onLaunchManual}
                   className="px-5 py-3.5 bg-white hover:bg-slate-50 text-slate-800 font-semibold rounded-xl text-sm transition-all border border-slate-300 shadow-sm flex items-center gap-2"
                 >
                   <BookOpen className="w-4 h-4 text-amber-600" />
-                  <span>Documentación Oficial</span>
+                  <span>Manual de Usuario</span>
                 </button>
 
                 <button
@@ -160,7 +214,7 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
         </div>
       </section>
 
-      {/* Sección Destacada: Actualizaciones Recientes (CRUD Notes + Excel + Documentación) */}
+      {/* Sección Destacada: Actualizaciones Recientes (CRUD Notes + Excel + Manual) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-amber-500/10 via-emerald-500/10 to-blue-500/10 border-2 border-amber-500/30 rounded-2xl p-6 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -170,14 +224,14 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
                   NUEVO EN ESTA VERSIÓN
                 </span>
                 <span className="text-xs font-bold text-slate-700">
-                  Integración Cloud & Exportación
+                  Control Centralizado & Exportación
                 </span>
               </div>
               <h3 className="text-lg font-bold text-slate-900">
-                Bitácora de Notas Supabase con Descarga a Excel y Documentación de Arquitectura
+                Bitácora de Notas & Novedades con Descarga a Excel y Manual de Usuario
               </h3>
               <p className="text-xs text-slate-600 max-w-3xl">
-                Accede directamente al nuevo gestor de notas con CRUD conectado a la tabla <code className="bg-slate-200 px-1 py-0.5 rounded text-slate-800">notes</code> de Supabase, visor raw JSON y exportador a hojas de cálculo Excel, además del manual de arquitectura técnica de portería.
+                Accede directamente al nuevo gestor de notas con registro centralizado, visor de respuesta del servidor y exportador a hojas de cálculo Excel, además del manual operativo paso a paso para supervisores de portería.
               </p>
             </div>
 
@@ -191,11 +245,11 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
               </button>
 
               <button
-                onClick={onLaunchDocs}
+                onClick={onLaunchManual}
                 className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition-all shadow-sm flex items-center gap-1.5"
               >
-                <Database className="w-4 h-4 text-amber-400" />
-                <span>Ver Documentación</span>
+                <BookOpen className="w-4 h-4 text-amber-400" />
+                <span>Manual de Usuario</span>
               </button>
             </div>
           </div>
@@ -278,69 +332,108 @@ export const StartupLanding: React.FC<StartupLandingProps> = ({
         </div>
       </section>
 
-      {/* Galería Real de Operación en Obras Civiles */}
+      {/* Carrusel Profesional de Fotografías de Obra Civil */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          
+          {/* Carrusel Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
             <div>
-              <span className="text-xs font-bold text-amber-600 uppercase tracking-widest font-mono">
-                Presencia Operativa en Terreno
-              </span>
-              <h3 className="text-xl font-extrabold text-slate-900 mt-0.5">
-                Diseñado para Cuadrillas Reales en Construcción
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+                <span className="text-xs font-bold text-amber-600 uppercase tracking-widest font-mono">
+                  Galería Operativa en Terreno
+                </span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
+                Presencia Real en Proyectos de Construcción Civil
               </h3>
             </div>
-            <button
-              onClick={onLaunchKiosk}
-              className="text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 self-start sm:self-auto"
-            >
-              <span>Probar Kiosco Operativo</span>
-              <ChevronRight className="w-4 h-4" />
-            </button>
+
+            {/* Controles del Carrusel (Flechas y Contador) */}
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-mono font-bold text-slate-500">
+                0{currentSlide + 1} / 0{carouselSlides.length}
+              </span>
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={prevSlide}
+                  className="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-950 transition-colors shadow-xs"
+                  title="Foto anterior"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-950 transition-colors shadow-xs"
+                  title="Siguiente foto"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 group border border-slate-200">
-              <img
-                src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&auto=format&fit=crop&q=80"
-                alt="Cuadrilla de alturas en estructura"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-3 left-3 right-3 text-white">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400">Trabajo en Alturas</span>
-                <p className="text-xs font-bold leading-tight mt-0.5">Control de arnés 4 argollas y certificación vigente</p>
-              </div>
-            </div>
+          {/* Slide Principal del Carrusel */}
+          <div className="relative rounded-2xl overflow-hidden aspect-[16/9] md:aspect-[21/9] bg-slate-900 border border-slate-200 shadow-md">
+            <img
+              src={carouselSlides[currentSlide].imageUrl}
+              alt={carouselSlides[currentSlide].title}
+              className="w-full h-full object-cover transition-all duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
 
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 group border border-slate-200">
-              <img
-                src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=600&auto=format&fit=crop&q=80"
-                alt="Oficial de soldadura y estructura"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-3 left-3 right-3 text-white">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400">Soldadura & Encofrado</span>
-                <p className="text-xs font-bold leading-tight mt-0.5">Auditoría de careta, gafas y guantes de carnaza</p>
+            {/* Info Overlay del Slide Activo */}
+            <div className="absolute bottom-6 left-6 right-6 md:left-8 md:right-8 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white">
+              <div className="space-y-1.5 max-w-2xl">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-black uppercase tracking-wider bg-amber-500 text-slate-950 px-2 py-0.5 rounded font-mono">
+                    {carouselSlides[currentSlide].tag}
+                  </span>
+                  <span className="text-[10px] font-bold bg-white/20 backdrop-blur-sm text-white px-2 py-0.5 rounded border border-white/20">
+                    {carouselSlides[currentSlide].badge}
+                  </span>
+                </div>
+                <h4 className="text-lg md:text-2xl font-bold tracking-tight">
+                  {carouselSlides[currentSlide].title}
+                </h4>
+                <p className="text-xs md:text-sm text-slate-200 leading-relaxed">
+                  {carouselSlides[currentSlide].desc}
+                </p>
               </div>
-            </div>
 
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-100 group border border-slate-200">
-              <img
-                src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=600&auto=format&fit=crop&q=80"
-                alt="Estructura de edificio civil y grúas de construcción"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-3 left-3 right-3 text-white">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-amber-400">Edificación & Estructuras</span>
-                <p className="text-xs font-bold leading-tight mt-0.5">Control perimetral para cuadrillas y contratistas</p>
-              </div>
+              <button
+                onClick={onLaunchKiosk}
+                className="self-start md:self-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs transition-all shadow-md shrink-0 flex items-center gap-1.5"
+              >
+                <span>Ver Control en Kiosco</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
             </div>
-
           </div>
+
+          {/* Tiras de Miniaturas / Indicadores */}
+          <div className="grid grid-cols-5 gap-2 md:gap-3 pt-1">
+            {carouselSlides.map((slide, idx) => (
+              <button
+                key={slide.id}
+                onClick={() => setCurrentSlide(idx)}
+                className={`text-left p-2 rounded-xl border transition-all ${
+                  currentSlide === idx
+                    ? 'border-amber-500 bg-amber-50/50 shadow-xs ring-2 ring-amber-500/20'
+                    : 'border-slate-200 hover:border-slate-300 bg-slate-50/40 opacity-70 hover:opacity-100'
+                }`}
+              >
+                <span className="block text-[10px] font-mono font-bold text-amber-600">
+                  0{idx + 1}
+                </span>
+                <span className="block text-[11px] font-bold text-slate-800 truncate">
+                  {slide.tag}
+                </span>
+              </button>
+            ))}
+          </div>
+
         </div>
       </section>
 

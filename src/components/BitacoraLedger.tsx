@@ -31,23 +31,29 @@ export const BitacoraLedger: React.FC<BitacoraLedgerProps> = ({ bitacora, onVerE
       item.cedula.includes(searchTerm) ||
       item.cargo.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchFilter = filterResult === 'ALL' || item.resultado_ingreso === filterResult;
+    let matchFilter = true;
+    if (filterResult === 'ENTRADA') matchFilter = item.tipo_movimiento === 'ENTRADA';
+    else if (filterResult === 'SALIDA') matchFilter = item.tipo_movimiento === 'SALIDA';
+    else if (filterResult !== 'ALL') matchFilter = item.resultado_ingreso === filterResult;
+
     return matchSearch && matchFilter;
   });
 
   const exportCsv = () => {
-    const headers = ['ID', 'Cedula', 'Nombre', 'Cargo', 'Fecha', 'Hora_Llegada', 'Resultado', 'Estado_EPP', 'Dias_ARL', 'Dias_Alturas', 'Hash_Inmutable'];
+    const headers = ['ID', 'Cedula', 'Nombre', 'Cargo', 'Fecha', 'Tipo_Movimiento', 'Hora_Entrada', 'Hora_Salida', 'Horas_Laboradas', 'Resultado', 'Estado_EPP', 'Dias_ARL', 'Hash_Inmutable'];
     const rows = filtered.map(r => [
       r.id,
       r.cedula,
       `"${r.trabajador_nombre}"`,
       `"${r.cargo}"`,
       r.fecha,
-      r.hora_exacta_llegada,
+      r.tipo_movimiento || 'ENTRADA',
+      `"${r.hora_entrada || r.hora_exacta_llegada}"`,
+      `"${r.hora_salida || 'En turno'}"`,
+      `"${r.horas_laboradas || 'Activo'}"`,
       r.resultado_ingreso,
       r.estado_epp,
       r.dias_vigentes_arl,
-      r.dias_vigentes_alturas ?? 0,
       r.hash_inmutable
     ]);
 
@@ -55,7 +61,7 @@ export const BitacoraLedger: React.FC<BitacoraLedgerProps> = ({ bitacora, onVerE
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `bitacora_inmutable_sst_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute('download', `bitacora_asistencia_entradas_salidas_${new Date().toISOString().split('T')[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -110,16 +116,28 @@ export const BitacoraLedger: React.FC<BitacoraLedgerProps> = ({ bitacora, onVerE
             Todos
           </button>
           <button
+            onClick={() => setFilterResult('ALL')}
+            className={`px-2.5 py-1 rounded font-medium ${filterResult === 'ALL' ? 'bg-slate-700 text-white font-bold' : 'text-slate-400 hover:text-white'}`}
+          >
+            Todos ({bitacora.length})
+          </button>
+          <button
+            onClick={() => setFilterResult('ENTRADA')}
+            className={`px-2.5 py-1 rounded font-medium ${filterResult === 'ENTRADA' ? 'bg-emerald-950 text-emerald-300 font-bold border border-emerald-800' : 'text-slate-400 hover:text-white'}`}
+          >
+            Entradas
+          </button>
+          <button
+            onClick={() => setFilterResult('SALIDA')}
+            className={`px-2.5 py-1 rounded font-medium ${filterResult === 'SALIDA' ? 'bg-amber-950 text-amber-300 font-bold border border-amber-800' : 'text-slate-400 hover:text-white'}`}
+          >
+            Salidas
+          </button>
+          <button
             onClick={() => setFilterResult('AUTORIZADO')}
             className={`px-2.5 py-1 rounded font-medium ${filterResult === 'AUTORIZADO' ? 'bg-emerald-950 text-emerald-300 font-bold border border-emerald-800' : 'text-slate-400 hover:text-white'}`}
           >
             Autorizados
-          </button>
-          <button
-            onClick={() => setFilterResult('PRE_ALERTA')}
-            className={`px-2.5 py-1 rounded font-medium ${filterResult === 'PRE_ALERTA' ? 'bg-amber-950 text-amber-300 font-bold border border-amber-800' : 'text-slate-400 hover:text-white'}`}
-          >
-            Pre-alerta
           </button>
           <button
             onClick={() => setFilterResult('RECHAZADO')}
@@ -136,13 +154,14 @@ export const BitacoraLedger: React.FC<BitacoraLedgerProps> = ({ bitacora, onVerE
           <table className="w-full text-left text-xs">
             <thead className="bg-[#0b101a] border-b border-slate-800 text-[11px] font-mono text-slate-400 uppercase tracking-wider">
               <tr>
-                <th className="px-4 py-3">Hora Llegada (NTP)</th>
+                <th className="px-4 py-3">Movimiento</th>
+                <th className="px-4 py-3">Hora Entrada / Salida</th>
+                <th className="px-4 py-3">Jornada</th>
                 <th className="px-4 py-3">Trabajador & Cédula</th>
                 <th className="px-4 py-3">Cargo</th>
                 <th className="px-4 py-3">Estado EPP</th>
                 <th className="px-4 py-3">Vigencias SST</th>
-                <th className="px-4 py-3">Decisión Puerta</th>
-                <th className="px-4 py-3">Hash Forense</th>
+                <th className="px-4 py-3">Decisión</th>
                 <th className="px-4 py-3 text-right">Evidencia</th>
               </tr>
             </thead>
@@ -150,12 +169,36 @@ export const BitacoraLedger: React.FC<BitacoraLedgerProps> = ({ bitacora, onVerE
               {filtered.map((item) => (
                 <tr key={item.id} className="hover:bg-slate-800/30 transition-colors">
                   
-                  {/* Hora Exacta Llegada */}
-                  <td className="px-4 py-3.5 whitespace-nowrap font-mono font-bold text-white">
-                    <span className="text-amber-400 bg-amber-950/40 border border-amber-800/40 px-2 py-0.5 rounded">
-                      {item.hora_exacta_llegada}
+                  {/* Tipo de Movimiento */}
+                  <td className="px-4 py-3.5 whitespace-nowrap">
+                    {item.tipo_movimiento === 'SALIDA' ? (
+                      <span className="text-[10px] font-black uppercase tracking-wider bg-amber-950/80 text-amber-400 border border-amber-800 px-2 py-0.5 rounded">
+                        SALIDA
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-950/80 text-emerald-400 border border-emerald-800 px-2 py-0.5 rounded">
+                        ENTRADA
+                      </span>
+                    )}
+                  </td>
+
+                  {/* Horas Entrada y Salida */}
+                  <td className="px-4 py-3.5 whitespace-nowrap font-mono text-xs">
+                    <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                      <span className="text-[10px] text-slate-500 font-sans">E:</span>
+                      <span>{item.hora_entrada || item.hora_exacta_llegada}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-amber-400 font-semibold text-[11px] mt-0.5">
+                      <span className="text-[10px] text-slate-500 font-sans">S:</span>
+                      <span>{item.hora_salida || 'En turno activo'}</span>
+                    </div>
+                  </td>
+
+                  {/* Horas Laboradas */}
+                  <td className="px-4 py-3.5 whitespace-nowrap font-mono text-[11px] text-slate-300">
+                    <span className="bg-slate-900 border border-slate-800 px-2 py-0.5 rounded">
+                      {item.horas_laboradas || (item.hora_salida ? 'Turno completo' : 'Activo')}
                     </span>
-                    <span className="block text-[10px] text-slate-500 font-normal mt-0.5">{item.fecha}</span>
                   </td>
 
                   {/* Trabajador */}

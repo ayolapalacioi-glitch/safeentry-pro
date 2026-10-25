@@ -127,7 +127,7 @@ export const ConfigSupabaseModal: React.FC = () => {
               </label>
               <input
                 type="text"
-                placeholder="https://490espacios.empresa.co"
+                placeholder="https://servidor-central-obra.empresa.co"
                 value={supabaseUrl}
                 onChange={(e) => setSupabaseUrl(e.target.value)}
                 className="w-full p-2.5 bg-[#0b101a] border border-slate-700 rounded-lg text-slate-200 font-mono text-xs focus:outline-none focus:border-amber-500"
@@ -140,7 +140,7 @@ export const ConfigSupabaseModal: React.FC = () => {
               </label>
               <input
                 type="password"
-                placeholder="token-seguridad-4-90-espacios..."
+                placeholder="token-seguridad-obra..."
                 value={anonKey}
                 onChange={(e) => setAnonKey(e.target.value)}
                 className="w-full p-2.5 bg-[#0b101a] border border-slate-700 rounded-lg text-slate-200 font-mono text-xs focus:outline-none focus:border-amber-500"

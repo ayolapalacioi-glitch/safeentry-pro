@@ -49,7 +49,11 @@ export interface BitacoraIngreso {
   trabajador_nombre: string;
   cargo: string;
   fecha: string;
+  tipo_movimiento?: 'ENTRADA' | 'SALIDA';
   hora_exacta_llegada: string;
+  hora_entrada?: string;
+  hora_salida?: string | null;
+  horas_laboradas?: string | null;
   timestamp_ntp: string;
   resultado_ingreso: 'AUTORIZADO' | 'PRE_ALERTA' | 'RECHAZADO';
   estado_epp: 'COMPLETO' | 'INCOMPLETO';

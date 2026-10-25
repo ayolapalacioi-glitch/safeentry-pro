@@ -184,7 +184,11 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     trabajador_nombre: 'Carlos Andrés Pérez',
     cargo: 'Oficial de Alturas & Estructura',
     fecha: new Date().toISOString().split('T')[0],
+    tipo_movimiento: 'ENTRADA',
     hora_exacta_llegada: '06:52:14 AM',
+    hora_entrada: '06:52 AM',
+    hora_salida: null,
+    horas_laboradas: 'En jornada activa',
     timestamp_ntp: new Date().toISOString(),
     resultado_ingreso: 'AUTORIZADO',
     estado_epp: 'COMPLETO',
@@ -212,7 +216,11 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     trabajador_nombre: 'Álvaro Hernán Castro',
     cargo: 'Maestro General de Obra',
     fecha: new Date().toISOString().split('T')[0],
+    tipo_movimiento: 'SALIDA',
     hora_exacta_llegada: '06:45:10 AM',
+    hora_entrada: '06:45 AM',
+    hora_salida: '04:30 PM',
+    horas_laboradas: '9h 45m',
     timestamp_ntp: new Date().toISOString(),
     resultado_ingreso: 'AUTORIZADO',
     estado_epp: 'COMPLETO',
@@ -227,10 +235,10 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     epp_faltantes: [],
     dias_vigentes_arl: 30,
     dias_vigentes_alturas: 85,
-    foto_evidencia_url: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&auto=format&fit=crop&q=80',
+    foto_evidencia_url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&auto=format&fit=crop&q=80',
     confidence_avg: 99.1,
     hash_inmutable: 'a127a44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852ba89',
-    nodo_porteria_id: 'KIOSKO-01-4-90-ESPACIOS',
+    nodo_porteria_id: 'KIOSKO-01-ACCESO-OBRA',
     sincronizado_desde_edge: true,
     created_at: new Date().toISOString()
   },
@@ -238,9 +246,13 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     id: 'bit-003',
     cedula: '98712330',
     trabajador_nombre: 'Jorge Eliecer Ramírez',
-    cargo: 'Soldador Estructural',
+    cargo: 'Oficial de Armado & Encofrado',
     fecha: new Date().toISOString().split('T')[0],
+    tipo_movimiento: 'ENTRADA',
     hora_exacta_llegada: '06:58:32 AM',
+    hora_entrada: '06:58 AM',
+    hora_salida: null,
+    horas_laboradas: 'En jornada activa',
     timestamp_ntp: new Date().toISOString(),
     resultado_ingreso: 'PRE_ALERTA',
     estado_epp: 'COMPLETO',
@@ -255,7 +267,7 @@ export const INITIAL_BITACORA: BitacoraIngreso[] = [
     epp_faltantes: [],
     dias_vigentes_arl: 6,
     dias_vigentes_alturas: 48,
-    foto_evidencia_url: 'https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=600&auto=format&fit=crop&q=80',
+    foto_evidencia_url: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=600&auto=format&fit=crop&q=80',
     confidence_avg: 97.2,
     hash_inmutable: 'b943214298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852cd12',
     nodo_porteria_id: 'KIOSKO-01-4-90-ESPACIOS',
@@ -318,12 +330,13 @@ export async function getRechazos(): Promise<AuditoriaRechazo[]> {
   );
 }
 
-// Registrar nuevo ingreso en la Bitácora (Inmutable)
+// Registrar nuevo ingreso o salida en la Bitácora (Inmutable)
 export async function registerIngresoInmutable(
   worker: Worker,
   detections: EPPDetectionsMap,
   missingEpp: string[],
-  evidencePhotoUrl: string
+  evidencePhotoUrl: string,
+  tipoMovimiento: 'ENTRADA' | 'SALIDA' = 'ENTRADA'
 ): Promise<{ record: BitacoraIngreso; status: TrafficLightStatus; rechazo?: AuditoriaRechazo }> {
   const now = new Date();
   const dateStr = now.toISOString().split('T')[0];
@@ -367,13 +380,19 @@ export async function registerIngresoInmutable(
     safety_boots: detections.safety_boots.detected
   };
 
+  const isSalida = tipoMovimiento === 'SALIDA';
+
   const newBitacoraItem: BitacoraIngreso = {
     id: `bit-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
     cedula: worker.cedula,
     trabajador_nombre: worker.nombre_completo,
     cargo: worker.cargo,
     fecha: dateStr,
+    tipo_movimiento: tipoMovimiento,
     hora_exacta_llegada: timeStr,
+    hora_entrada: isSalida ? (previousRecord?.hora_entrada || '06:30 AM') : timeStr,
+    hora_salida: isSalida ? timeStr : null,
+    horas_laboradas: isSalida ? 'Jornada completada' : 'En jornada activa',
     timestamp_ntp: now.toISOString(),
     resultado_ingreso: resultado,
     estado_epp: isEppComplete ? 'COMPLETO' : 'INCOMPLETO',

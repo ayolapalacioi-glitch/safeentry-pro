@@ -21,7 +21,9 @@ import {
   UserCheck, 
   ShieldAlert, 
   Hash, 
-  Video
+  Video,
+  LogIn,
+  LogOut
 } from 'lucide-react';
 import type { Worker, EPPDetectionsMap, BitacoraIngreso } from '../types';
 import { DEMO_SCENARIOS, renderYoloBoundingBoxes, type VisionScenario } from '../services/visionSimulator';
@@ -35,6 +37,7 @@ interface KioskPorteriaProps {
 
 export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngresoRegistrado }) => {
   const [selectedScenario, setSelectedScenario] = useState<VisionScenario>(DEMO_SCENARIOS[0]);
+  const [tipoRegistro, setTipoRegistro] = useState<'ENTRADA' | 'SALIDA'>('ENTRADA');
   const [activeWorker, setActiveWorker] = useState<Worker | null>(null);
   const [currentDetections, setCurrentDetections] = useState<EPPDetectionsMap>(DEMO_SCENARIOS[0].detections);
   const [lastResult, setLastResult] = useState<BitacoraIngreso | null>(null);
@@ -145,7 +148,8 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
         activeWorker,
         currentDetections,
         missingEppKeys,
-        selectedScenario.imageFallback
+        selectedScenario.imageFallback,
+        tipoRegistro
       );
 
       setLastResult(record);
@@ -186,18 +190,37 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
       
-      {/* Top Selector: Escenarios de Obra & Cámara */}
-      <div className="bg-[#111927] border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs uppercase font-mono font-bold tracking-wider text-amber-400">Escenarios de Auditoría en Portería:</span>
-            <span className="text-[11px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">6:30 AM Peak Hour</span>
-          </div>
-          <p className="text-xs text-slate-400 mt-1">
-            Prueba cómo reacciona el sistema ante obreros conformes, sin calzado de seguridad, o con ARL/Alturas vencidos.
-          </p>
+      {/* Top Selector: Modo de Turno (Entrada/Salida) & Escenarios de Obra */}
+      <div className="bg-[#111927] border border-slate-800 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
+        
+        {/* Selector de Modo de Turno: Entrada vs Salida */}
+        <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-700/80 p-1.5 rounded-xl self-start md:self-auto">
+          <button
+            onClick={() => setTipoRegistro('ENTRADA')}
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+              tipoRegistro === 'ENTRADA'
+                ? 'bg-emerald-600 text-white shadow-sm'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <LogIn className="w-4 h-4" />
+            <span>Turno Entrada (06:30 AM)</span>
+          </button>
+
+          <button
+            onClick={() => setTipoRegistro('SALIDA')}
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
+              tipoRegistro === 'SALIDA'
+                ? 'bg-amber-500 text-slate-950 shadow-sm'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <LogOut className="w-4 h-4" />
+            <span>Turno Salida (Cierre Jornada)</span>
+          </button>
         </div>
 
+        {/* Escenarios Demo */}
         <div className="flex flex-wrap items-center gap-2">
           {DEMO_SCENARIOS.map(esc => (
             <button
@@ -433,6 +456,8 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
             className={`w-full py-4 rounded-xl font-bold text-sm tracking-wider uppercase transition-all shadow-xl flex items-center justify-center gap-2.5 ${
               isEvaluating
                 ? 'bg-slate-800 text-slate-400 cursor-not-allowed'
+                : tipoRegistro === 'ENTRADA'
+                ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white shadow-emerald-500/20 active:scale-[0.99]'
                 : 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-amber-500/20 active:scale-[0.99]'
             }`}
           >
@@ -441,10 +466,15 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
                 <RefreshCw className="w-5 h-5 animate-spin" />
                 Auditoría en proceso (&lt;400ms)...
               </>
+            ) : tipoRegistro === 'ENTRADA' ? (
+              <>
+                <LogIn className="w-5 h-5" />
+                Validar e Ingresar Turno (06:30 AM)
+              </>
             ) : (
               <>
-                <UserCheck className="w-5 h-5" />
-                Validar Ingreso Biométrico & EPP
+                <LogOut className="w-5 h-5" />
+                Registrar Salida de Turno (Cierre Jornada)
               </>
             )}
           </button>
@@ -512,11 +542,26 @@ export const KioskPorteria: React.FC<KioskPorteriaProps> = ({ workers, onIngreso
               </div>
 
               {/* Audit Details */}
-              <div className="mt-4 pt-3 border-t border-slate-800/80 space-y-2 text-xs">
+              <div className="mt-4 pt-3 border-t border-slate-800/80 space-y-2.5 text-xs">
+                <div className="grid grid-cols-2 gap-2 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800 font-mono">
+                  <div>
+                    <span className="text-[10px] text-slate-500 uppercase block">Hora de Entrada</span>
+                    <span className="font-bold text-emerald-400">
+                      {lastResult.hora_entrada || lastResult.hora_exacta_llegada}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-500 uppercase block">Hora de Salida</span>
+                    <span className="font-bold text-amber-400">
+                      {lastResult.hora_salida || 'En turno activo'}
+                    </span>
+                  </div>
+                </div>
+
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Hora de Llegada Inmutable:</span>
+                  <span className="text-slate-400">Jornada Registrada:</span>
                   <span className="font-mono font-bold text-white bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
-                    {lastResult.hora_exacta_llegada}
+                    {lastResult.tipo_movimiento === 'SALIDA' ? 'Salida Marcada (Turno Cerrado)' : 'Entrada Marcada (Turno Abierto)'}
                   </span>
                 </div>
 
